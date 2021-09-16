@@ -4,7 +4,7 @@ import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button} from "r
 
 
 
-function HomePage () {
+function HomePage ({data}) {
     
     const logo = require('../assets/logo.png')
 

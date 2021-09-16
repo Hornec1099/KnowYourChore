@@ -3,9 +3,11 @@ import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-nativ
 import HomePage from "./screens/HomePage";
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ListScreen from "./screens/ListScreen";
 
 
 const Stack = createNativeStackNavigator();  
+
 
 export default function App() {
 
@@ -14,8 +16,12 @@ export default function App() {
     
     <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component ={HomePage} />
-         
+         <Stack.Screen name="Home" > 
+         {data => <HomePage props ={data} />}
+         </Stack.Screen>
+         <Stack.Screen name="ListScreen" >
+         {data => <ListScreen props ={data} />}
+         </Stack.Screen>
        </Stack.Navigator>
 
     </NavigationContainer>
