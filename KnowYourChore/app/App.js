@@ -17,10 +17,10 @@ export default function App() {
     <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
          <Stack.Screen name="Home" > 
-         {data => <HomePage props ={data} />}
+         {navigation => <HomePage props ={navigation} />}
          </Stack.Screen>
          <Stack.Screen name="ListScreen" >
-         {data => <ListScreen props ={data} />}
+         {navigation => <ListScreen props ={navigation} />}
          </Stack.Screen>
        </Stack.Navigator>
 

@@ -4,14 +4,18 @@ import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button} from "r
 
 
 
-function HomePage ({data}) {
+function HomePage ({navigation}) {
     
     const logo = require('../assets/logo.png')
+
+    const handlePress = () =>{
+        navigation.navigation('ListScreen')
+    }
 
     return (
 
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button  style ={styles.button} title =" Go To App "/>
+                <Button  style ={styles.button} title =" Go To App " onPress={handlePress}/>
             </ImageBackground>
         
     )
