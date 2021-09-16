@@ -1,10 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-native";
 import HomePage from "./screens/HomePage";
-import taskService from "./services/tasksService";
+import { NavigationContainer } from '@react-navigation/native'
 
+
+const Stack = createNativeStackNavigator();  
 
 export default function App() {
+
+  
+  return (
+    
+    <NavigationContainer>
+       <Stack.Navigator>
+         <Stack.Screen name="Home" component ={HomePage} />
+       </Stack.Navigator>
+
+    </NavigationContainer>
+     
+  );
+}
+
+
 
   // const [tasks, setTasks] = useState([]);
   
@@ -29,14 +46,8 @@ export default function App() {
   //   )
   // }
 
-  
 
-  return (
-        <HomePage />
-      // <FlatList
+   // <FlatList
       // data={tasks}
       // keyExtractor={(task)  => task.id.toString()}
       // renderItem={ renderItem } />
-  );
-}
-
