@@ -4,37 +4,40 @@ import taskService from "./services/tasksService";
 
 
 export default function App() {
+
+  // const [tasks, setTasks] = useState([]);
   
-  const [tasks, setTasks] = useState([]);
-  
 
-  const getAllTasks = async () => {
-      const response = await taskService.getTasks();
-      setTasks(response);
-  };
+  // const getAllTasks = async () => {
+  //     const response = await taskService.getTasks();
+  //     setTasks(response);
+  // };
 
-  useEffect(() => {
-    getAllTasks();
-  }, []);
+  // useEffect(() => {
+  //   getAllTasks();
+  // }, []);
 
-  const renderItem = ({ item }) => {
-    return (
-      <View>
-    <Text> {item.taskName} </Text>
-    <Text> {item.taskDescription} </Text>
-    <Text> {item.taskLocation} </Text>
-    <Text> {item.taskAssignedTo} </Text>
-    </View>
-    )
-  }
+  // const renderItem = ({ item }) => {
+  //   return (
+  //     <View>
+  //   <Text> {item.taskName} </Text>
+  //   <Text> {item.taskDescription} </Text>
+  //   <Text> {item.taskLocation} </Text>
+  //   <Text> {item.taskAssignedTo} </Text>
+  //   </View>
+  //   )
+  // }
 
   
 
   return (
     
-      <FlatList
-      data={tasks}
-      keyExtractor={(task)  => task.id.toString()}
-      renderItem={ renderItem } />
+    <View>
+      <Text>This is the APP!</Text>
+    </View>
+      // <FlatList
+      // data={tasks}
+      // keyExtractor={(task)  => task.id.toString()}
+      // renderItem={ renderItem } />
   );
 }
