@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-native";
 import HomePage from "./screens/HomePage";
 import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const Stack = createNativeStackNavigator();  
@@ -12,8 +13,9 @@ export default function App() {
   return (
     
     <NavigationContainer>
-       <Stack.Navigator>
+       <Stack.Navigator initialRouteName="Home">
          <Stack.Screen name="Home" component ={HomePage} />
+         
        </Stack.Navigator>
 
     </NavigationContainer>
