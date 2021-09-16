@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import taskService from "./services/tasksService";
+import TextComponent from "./textComponent";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -9,8 +9,6 @@ export default function App() {
   useEffect(() => {
     taskService.getTasks().then((tasks) => setTasks(tasks));
   }, []);
-
-  return( 
-  
-  <View>{tasks}</View>
-  )}
+  console.log(tasks);
+  return <TextComponent tasks={tasks} />;
+}
