@@ -11,7 +11,7 @@ function HomePage () {
     return (
 
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button title =" Go To App "/>
+                <Button  style ={styles.button} title =" Go To App "/>
             </ImageBackground>
         
     )
@@ -20,7 +20,13 @@ function HomePage () {
 const styles = StyleSheet.create({
     background:{
         flex:1,
+        justifyContent:"flex-end"
         },
+    button:{
+        height: 100
+    }
+        
+    
     
 })
 
