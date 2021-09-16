@@ -1,38 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-native";
 import taskService from "./services/tasksService";
-import TextComponent from "./textComponent";
+
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   const getAllTasks = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/tasks/");
-      const data = await response.json();
-      setTasks(data);
-      console.log(data);
-    } catch {
-      (error) => {
-        console.error(error);
-      };
-    } finally {
-      setLoading(false);
-    }
+      const response = await taskService.getTasks();
+      setTasks(response);
   };
 
   useEffect(() => {
     getAllTasks();
   }, []);
 
-  console.log(tasks);
+  const renderItem = ({ item }) => {
+    return (
+      <View>
+    <Text> {item.taskName} </Text>
+    <Text> {item.taskDescription} </Text>
+    <Text> {item.taskLocation} </Text>
+    <Text> {item.taskAssignedTo} </Text>
+    </View>
+    )
+  }
+
+  
 
   return (
-    <View>
-      { isLoading ? <ActivityIndicator/> : (
-      <TextComponent tasks={tasks} />
-      )};
-    </View>
+    
+      <FlatList
+      data={tasks}
+      keyExtractor={(task)  => task.id.toString()}
+      renderItem={ renderItem } />
   );
 }
