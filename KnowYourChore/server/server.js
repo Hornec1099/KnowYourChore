@@ -12,10 +12,10 @@ MongoClient.connect("mongodb://localhost:27017").then(() => {
   const tasksRouter = createRouter(tasksCollection);
   app.use("/api/tasks", tasksRouter);
 })
-.catch(console.error)
+.catch(console.error);
 
 
 
 app.listen(5000, function(){
-    console.log(`Listening on ${this.address().port}`)
-})
+    console.log(`Listening on ${this.address().port}`);
+});
