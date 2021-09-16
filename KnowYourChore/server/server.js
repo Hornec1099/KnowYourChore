@@ -7,7 +7,8 @@ const createRouter = require('./helpers/createRouter')
 app.use(express.json());
 app.use(cors());
 
-MongoClient.connect("mongodb://localhost:27017").then(() => {
+MongoClient.connect("mongodb://localhost:27017")
+    .then((client) => {
   const db = client.db("tasks");
   const tasksCollection = db.collection("tasks");
   const tasksRouter = createRouter(tasksCollection);
