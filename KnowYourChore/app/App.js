@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-native";
+import HomePage from "./screens/HomePage";
 import taskService from "./services/tasksService";
 
 
@@ -31,10 +32,7 @@ export default function App() {
   
 
   return (
-    
-    <View>
-      <Text>This is the APP!</Text>
-    </View>
+        <HomePage />
       // <FlatList
       // data={tasks}
       // keyExtractor={(task)  => task.id.toString()}
