@@ -8,14 +8,10 @@ function HomePage ({navigation}) {
     
     const logo = require('../assets/logo.png')
 
-    const handlePress = () =>{
-        navigation.navigation('ListScreen')
-    }
-
     return (
 
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button  style ={styles.button} title =" Go To App " onPress={handlePress}/>
+                <Button  style ={styles.button} title =" Go To App " onPress={() => {navigation.navigate('ListScreen')}}/>
             </ImageBackground>
         
     )

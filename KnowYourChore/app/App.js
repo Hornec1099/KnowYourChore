@@ -15,13 +15,9 @@ export default function App() {
   return (
     
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" > 
-         {navigation => <HomePage props ={navigation} />}
-         </Stack.Screen>
-         <Stack.Screen name="ListScreen" >
-         {navigation => <ListScreen props ={navigation} />}
-         </Stack.Screen>
+       <Stack.Navigator initialRouteName="ListScreen">
+         <Stack.Screen name="Home" component ={HomePage}/>
+         <Stack.Screen name="ListScreen" component ={ListScreen}/>
        </Stack.Navigator>
 
     </NavigationContainer>

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button} from "react-native";
+import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button, View} from "react-native";
 
 
 function ListScreen ({navigation}) {
 
-    const handlePress = () =>{
-        navigation.navigation('Home')
-    }
+    
 
     return (
         <View> 
         <Text> The ListScreen Page </Text>
-        <Button  style ={styles.button} title =" Go To Home " onPress={handlePress}/>
+        <Button title =" Go To Home " onPress={() => {navigation.navigate("Home")}}/>
         </View>
     )
 }
