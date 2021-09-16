@@ -8,7 +8,7 @@
     "eject": "expo eject",
     "serverStart": "node server/server.js",
     "seeds": "mongo < ./server/db/seeds.js",
-    "server:dev": "nodemon server.js"
+    "server:dev": "nodemon ./server/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
