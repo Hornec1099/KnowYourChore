@@ -4,8 +4,9 @@ import taskService from "./services/tasksService";
 
 
 export default function App() {
+  
   const [tasks, setTasks] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  
 
   const getAllTasks = async () => {
       const response = await taskService.getTasks();
