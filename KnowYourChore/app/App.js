@@ -1,24 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import taskService from "./services/tasksService";
 
 export default function App() {
+  const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    taskService.getTasks().then((tasks) => setTasks(tasks));
+  }, []);
 
+  return( 
   
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  <View>{tasks}</View>
+  )}
