@@ -14,7 +14,7 @@ export default function App() {
 
   
   return (
-    
+    // this is th home base for our navigation technology
     <NavigationContainer>
        <Stack.Navigator initialRouteName="Selection">
          <Stack.Screen name="Home" component ={HomePage}/>

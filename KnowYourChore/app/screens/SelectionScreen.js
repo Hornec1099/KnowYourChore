@@ -1,13 +1,27 @@
 import React from "react";
-import { Text } from "react-native";
+import { Dropdown } from "react-native-material-dropdown";
+import { Text , Button, View} from "react-native";
 
-function SelectionScreen(){
+function SelectionScreen({navigation}){
     
+    
+    let data = [{
+        value: "TaskList1"
+    },
+    {
+        value: "TaskList2"
+    }]
     
     return (
-        <Text>
-            This is selection screen
-        </Text>
+
+        <View>
+            <Text> Choose Your Chores </Text>
+            {/* dropdown list button goes here */}
+            
+            <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/>
+            <Button title="Start New List" onPress = {() => {navigation.navigate('Home')}}/>
+        </View>
+
     )
 }
 
