@@ -1,5 +1,4 @@
 import React from "react";
-import { Dropdown } from "react-native-material-dropdown";
 import { Text , Button, View} from "react-native";
 
 function SelectionScreen({navigation}){
