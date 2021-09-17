@@ -23,9 +23,13 @@ const styles = StyleSheet.create({
         justifyContent:"flex-end"
         },
     button:{
+<<<<<<< HEAD
         height: 100,
         
     
+=======
+        height: 100
+>>>>>>> main
     }
         
     
