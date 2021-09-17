@@ -4,14 +4,14 @@ import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button} from "r
 
 
 
-function HomePage () {
+function HomePage ({navigation}) {
     
     const logo = require('../assets/logo.png')
 
     return (
 
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button  style ={styles.button} title =" Go To App "/>
+                <Button  style ={styles.button} title =" Go To App " onPress={() => {navigation.push('ListScreen')}}/>
             </ImageBackground>
         
     )
