@@ -21,9 +21,7 @@ export default function App() {
          <Stack.Screen name="ListScreen" component ={ListScreen}/>
          <Stack.Screen name="Selection" component ={SelectionScreen}/>
        </Stack.Navigator>
-
     </NavigationContainer>
-     
   );}
 
 

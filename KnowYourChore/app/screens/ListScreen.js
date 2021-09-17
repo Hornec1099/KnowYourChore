@@ -9,6 +9,7 @@ function ListScreen ({navigation}) {
     return (
         <View> 
         <Text> The ListScreen Page </Text>
+        
         <Button title =" Go To Home " onPress={() => {navigation.push("Home")}}/>
         </View>
     )

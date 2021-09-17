@@ -17,7 +17,7 @@ function SelectionScreen({navigation}){
             <Text> Choose Your Chores </Text>
             {/* dropdown list button goes here */}
             
-            <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/>
+            <Button title="Open List" onPress ={() => { navigation.push('ListScreen')}}/>
             <Button title="Start New List" onPress = {() => {navigation.navigate('Home')}}/>
         </View>
 
