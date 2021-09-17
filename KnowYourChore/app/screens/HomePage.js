@@ -11,7 +11,7 @@ function HomePage ({navigation}) {
     return (
 
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button  style ={styles.button} title =" Go To App " onPress={() => {navigation.navigate('ListScreen')}}/>
+                <Button  style ={styles.button} title =" Go To App " onPress={() => {navigation.push('ListScreen')}}/>
             </ImageBackground>
         
     )
