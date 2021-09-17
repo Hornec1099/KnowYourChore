@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View , FlatList} from "react-native";
 import HomePage from "./screens/HomePage";
 import { NavigationContainer } from '@react-navigation/native'
-
+import {CreateNativeStackNavigator} from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator();  
 
