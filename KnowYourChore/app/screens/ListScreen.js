@@ -1,18 +1,71 @@
-import React, { useEffect, useState } from "react";
-import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button, View} from "react-native";
-
+import React, {useState}  from "react";
+import { Text, FlatList, Button, View, StyleSheet} from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { Pressable } from "react-native";
 
 function ListScreen ({navigation}) {
 
-    
+    const [checkedState , setCheckedState] = useState(false)
+
+    let data = [{
+        "id":1,
+        "taskName":"Vacuum"
+    },
+    {
+        "id":2,
+        "taskName":"Wash"
+    }]
+
+      const renderItem = ({ item }) => {
+    return (
+    <View style ={style.taskContainer}>
+        <BouncyCheckbox isChecked = {checkedState} onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
+        <Pressable onPress={() => {navigation.push("Detail")}}>
+            <Text>{item.taskName}</Text>
+        </Pressable>
+    </View>
+    )
+  }
 
     return (
-        <View> 
+        <View style ={style.all}> 
         <Text> The ListScreen Page </Text>
-        
-        <Button title =" Go To Home " onPress={() => {navigation.push("Home")}}/>
+         <FlatList
+           data={data}
+           keyExtractor={(task)  => task.id.toString()}
+           renderItem={ renderItem } />
+        <Pressable style = {style.pressable} onPress={() => {navigation.push("Home")}}>
+            <Text style ={style.text }>Go To Home </Text>
+        </Pressable>
         </View>
     )
 }
+
+const style = StyleSheet.create({
+    all:{
+        
+        alignContent:"center"
+    },
+    pressable:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: 'black',
+        color:'white'
+    },
+    text:{
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    },
+    taskContainer:{
+        flexDirection:"row",
+    }
+})
 
 export default ListScreen;
