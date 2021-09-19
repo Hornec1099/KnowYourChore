@@ -19,7 +19,10 @@ function ListScreen ({navigation}) {
       const renderItem = ({ item }) => {
     return (
     <View style ={style.taskContainer}>
-        <BouncyCheckbox isChecked = {checkedState} onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
+        <BouncyCheckbox 
+        fillColor="orange" unfillColor="darkorange"  
+        isChecked = {checkedState} 
+        onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         <Pressable onPress={() => {navigation.push("Detail")}}>
             <Text>{item.taskName}</Text>
         </Pressable>
@@ -37,6 +40,9 @@ function ListScreen ({navigation}) {
         <Pressable style = {style.pressable} onPress={() => {navigation.push("Home")}}>
             <Text style ={style.text }>Go To Home </Text>
         </Pressable>
+        <Pressable style = {style.pressable} onPress={() => {navigation.push("Detail")}}>
+            <Text style ={style.text }> Add New Task </Text>
+        </Pressable>
         </View>
     )
 }
@@ -53,15 +59,14 @@ const style = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        backgroundColor: 'black',
-        color:'white'
+        backgroundColor: 'lightblue',
     },
     text:{
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'white',
+        color: 'black',
     },
     taskContainer:{
         flexDirection:"row",
