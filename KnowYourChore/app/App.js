@@ -22,6 +22,7 @@ export default function App() {
        <Stack.Navigator initialRouteName="Home">
          <Stack.Screen name="Home" component ={HomePage}/>
          <Stack.Screen name="ListScreen" component ={ListScreen}/>
+         <Stack.Screen name="SelectionScreen" component ={SelectionScreen}/>
          {/* <Stack.Screen name="IndividualTaskScreen" component ={IndividualTaskScreen}/> */}
          <Stack.Screen name="IndividualTaskScreen" component ={IndividualTaskScreen1}/>
        </Stack.Navigator>
@@ -60,3 +61,7 @@ export default function App() {
       // data={tasks}
       // keyExtractor={(task)  => task.id.toString()}
       // renderItem={ renderItem } />
+
+      const editTask = (task) => {
+        item.id = Math.random();
+      }
