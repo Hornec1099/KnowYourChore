@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 // import { Dropdown } from "react-native-material-dropdown";
 import { Text , Button, View, StyleSheet, Picker} from "react-native";
-// import { Ionicons} from '@expo/vector-icons';
-// import { Colors } from "react-native/Libraries/NewAppScreen";
+
 
 function SelectionScreen({navigation}){
     
@@ -19,30 +18,29 @@ function SelectionScreen({navigation}){
 
         <View style = {styles.view}>
             <Text style ={styles.text}> Choose Your Chores </Text>
-            {/* dropdown list button goes here */}
+            
             <View style ={styles.picker}>
                <Picker 
+                    
                     selectedValue={selectedValue}
                     style={{ height: 50, width:250 }}
-                    onValueChange = {(itemValue, itemIndex) => 
+                    onValueChange = {(itemValue) => 
                     setSelectedValue(itemValue)}
                     >
-                    <Picker.Item label = "Select Chore" />
 
                     <Picker.Item label = "Hovering" value= "hovering" />
                     <Picker.Item label = "Dishes" value= "dishes" />
                     <Picker.Item label = "Laundry" value= "laundry" />
                     <Picker.Item label = "Shopping" value= "shopping" />
                     <Picker.Item label = "Walking Pet" value= "walkingPet" />
-
-
-
-               </Picker>
-
-
+                    
+                </Picker>
             </View>
-            {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/>
-            <Button title="Start New List" onPress = {() => {navigation.navigate('Home')}}/> */}
+            
+
+            {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
+            <Button 
+             title="Add new chore to the list" onPress = {() => {navigation.navigate('Home')}}/>
         </View>
 
        
@@ -52,7 +50,8 @@ function SelectionScreen({navigation}){
 
 const styles = StyleSheet.create({
     view:{
-        alignItems: "center"
+        alignItems: "center",
+       justifyContent: "space-around"
 
     },
     text:{
@@ -61,13 +60,24 @@ const styles = StyleSheet.create({
         fontSize: 25,
         alignContent: "center",
         color: "green",
-        paddingTop:50
+        padding: 70,
+        borderColor: "black",
+        borderRadius: 25
+
     },
     picker:{
-        flex: 1,
-        paddingTop: 40,
-        alignItems: "center"
-    }
+        flex: 0.5,
+        padding: 40,
+        alignItems: "center",
+        height: 50,
+        width:250,
+    },
+
+   
+
+   
+
+
 })
 
 
