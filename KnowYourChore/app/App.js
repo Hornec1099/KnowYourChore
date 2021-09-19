@@ -22,6 +22,8 @@ export default function App() {
        <Stack.Navigator initialRouteName="Home">
          <Stack.Screen name="Home" component ={HomePage}/>
          <Stack.Screen name="ListScreen" component ={ListScreen}/>
+         {/* <Stack.Screen name="IndividualTaskScreen" component ={IndividualTaskScreen}/> */}
+         <Stack.Screen name="IndividualTaskScreen" component ={IndividualTaskScreen1}/>
        </Stack.Navigator>
     </NavigationContainer>
      
