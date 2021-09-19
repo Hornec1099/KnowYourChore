@@ -23,7 +23,7 @@ function ListScreen ({navigation}) {
         fillColor="orange" unfillColor="darkorange"  
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
-        <Pressable onPress={() => {navigation.push("Detail")}}>
+        
             <Text>{item.taskName}</Text>
         </Pressable>
     </View>
