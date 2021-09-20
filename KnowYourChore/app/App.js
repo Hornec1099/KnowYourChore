@@ -43,8 +43,6 @@ export default function App() {
   // useEffect(() => {
   //   getAllTasks();
   // }, []);
-<<<<<<< HEAD
-=======
 
   // const renderItem = ({ item }) => {
   //   return (
@@ -63,7 +61,6 @@ export default function App() {
       // keyExtractor={(task)  => task.id.toString()}
       // renderItem={ renderItem } />
 
-      const editTask = (task) => {
-        item.id = Math.random();
-      }
->>>>>>> main
+      // const editTask = (task) => {
+      //   item.id = Math.random();
+      // }
