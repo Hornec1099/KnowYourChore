@@ -38,20 +38,3 @@ export default function App() {
   // useEffect(() => {
   //   getAllTasks();
   // }, []);
-
-  // const renderItem = ({ item }) => {
-  //   return (
-  //     <View>
-  //   <Text> {item.taskName} </Text>
-  //   <Text> {item.taskDescription} </Text>
-  //   <Text> {item.taskLocation} </Text>
-  //   <Text> {item.taskAssignedTo} </Text>
-  //   </View>
-  //   )
-  // }
-
-
-   // <FlatList
-      // data={tasks}
-      // keyExtractor={(task)  => task.id.toString()}
-      // renderItem={ renderItem } />

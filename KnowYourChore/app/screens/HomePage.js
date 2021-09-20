@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, Image, SafeAreaView, ImageBackground, StyleSheet, Button} from "react-native";
+import { Text, ImageBackground, StyleSheet, Pressable} from "react-native";
 
 
 
@@ -9,24 +9,34 @@ function HomePage ({navigation}) {
     const logo = require('../assets/logo.png')
 
     return (
-
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Button  style ={styles.button} title =" Go To App " onPress={() => {navigation.push('ListScreen')}}/>
+                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push('ListScreen')}}>
+                    <Text> Enter </Text>
+                </Pressable>
             </ImageBackground>
-        
     )
 }
+
 
 const styles = StyleSheet.create({
     background:{
         flex:1,
-        justifyContent:"flex-end"
+        justifyContent:"flex-end",
+        backgroundColor:"white"
         },
     button:{
         height: 100,
-    }
-        
-    
+    },
+    pressableButtons:{
+        alignItems: 'center',
+        alignSelf:'center',
+        margin:10,
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        borderRadius: 25,
+        elevation: 3,
+        backgroundColor: 'lightblue',
+    }   
     
 })
 

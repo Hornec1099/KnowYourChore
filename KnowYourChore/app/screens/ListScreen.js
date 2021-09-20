@@ -1,5 +1,5 @@
 import React, {useState}  from "react";
-import { Text, FlatList, Button, View, StyleSheet} from "react-native";
+import { Text, FlatList, Button, View, StyleSheet, ScrollView} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
 
@@ -26,10 +26,66 @@ function ListScreen ({navigation}) {
     },
     {
         "id":4,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":5,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":6,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":7,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":8,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":9,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":10,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":11,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":12,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":13,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":14,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":15,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":16,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":17,
+        "taskName":"Fold Clothes" 
+    },
+    {
+        "id":18,
         "taskName":"Clean"
     }]
 
-      const renderItem = ({ item }) => {
+      const renderItem = ({ item, checkedState }) => {
     return (
     <View style ={style.taskContainer}>
         <BouncyCheckbox 
@@ -40,11 +96,8 @@ function ListScreen ({navigation}) {
             <Text>{item.taskName}</Text>
         </Pressable>
         <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
-            <Text> Remove
-            </Text>
+            <Text> Remove </Text>
         </Pressable>
-        
-        
     </View>
     )
   }
@@ -61,8 +114,8 @@ function ListScreen ({navigation}) {
         </View>
         <View>
         {/* button to navigate to home page */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Home")}}>
-            <Text style ={style.text }>Go To Home </Text>
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Selection")}}>
+            <Text style ={style.text }> Back to Selection </Text>
         </Pressable>
         {/* button to navigate to form for new task list */}
         <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Detail")}}>
@@ -76,8 +129,7 @@ function ListScreen ({navigation}) {
 const style = StyleSheet.create({
     all:{
         backgroundColor:"white",
-        flex:1
-        
+        flex:1  
     },
     header:{
         fontSize:26,
@@ -88,10 +140,9 @@ const style = StyleSheet.create({
     pressableButtons:{
         alignItems: 'center',
         alignSelf:'center',
-        width:150,
         margin:10,
         paddingVertical: 10,
-        paddingHorizontal: 10,
+        paddingHorizontal: 25,
         borderRadius: 25,
         elevation: 3,
         backgroundColor: 'lightblue',
@@ -105,27 +156,15 @@ const style = StyleSheet.create({
         borderRadius: 25,
         elevation: 3,
         backgroundColor: 'lightcoral',
-        
     },
     pressableTasks:{
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 7,
-        paddingHorizontal: 15,
+        paddingHorizontal: 0,
         borderRadius: 25,
         elevation: 10,
         backgroundColor: 'lightblue',
-        flex:1
-    },
-    markComplete:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 7,
-        paddingHorizontal: 15,
-        borderRadius: 25,
-        elevation: 3,
-        backgroundColor: 'lightblue',
-        textDecorationLine:"line-through",
         flex:1
     },
     text:{
