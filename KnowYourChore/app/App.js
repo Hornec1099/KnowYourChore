@@ -12,6 +12,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   
+
+
   return (
     
     // this is the home base for our navigation technology

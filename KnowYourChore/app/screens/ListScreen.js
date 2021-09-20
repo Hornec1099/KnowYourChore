@@ -8,11 +8,13 @@ function ListScreen ({navigation}) {
 
     const [checkedState , setCheckedState] = useState(false)
     const [tasks , setTasks] = useState([])
+    
 
     useEffect(() => {
         getAllTasks();
       }, []);
       console.log(tasks)
+
     const getAllTasks = async () => {
       const response = await taskService.getTasks();
       setTasks(response);
@@ -44,7 +46,7 @@ function ListScreen ({navigation}) {
         {/* List container with tasks */}
         <View>
          <FlatList
-           data={tasks}
+           data={tasks[0]}
            keyExtractor={(task)  => task.id.toString()}
            renderItem={ renderItem } />
         </View>
