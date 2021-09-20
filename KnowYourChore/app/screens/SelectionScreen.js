@@ -5,7 +5,7 @@ import { Text , Button, View, StyleSheet, Picker} from "react-native";
 
 function SelectionScreen({navigation}){
     
-    const [selectedValue, setSelectedValue] = useState("java");
+    const [selectedValue, setSelectedValue] = useState("");
     
     // let data = [{
     //     value: "TaskList1"
@@ -40,7 +40,7 @@ function SelectionScreen({navigation}){
 
             {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
             <Button 
-             title="Add new chore to the list" onPress = {() => {navigation.navigate('Home')}}/>
+             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/>
         </View>
 
        

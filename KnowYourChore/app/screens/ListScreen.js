@@ -60,30 +60,8 @@ function ListScreen ({navigation}) {
         "id":12,
         "taskName":"Fold Clothes" 
     },
-    {
-        "id":13,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":14,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":15,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":16,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":17,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":18,
-        "taskName":"Clean"
-    }]
+    
+    ]
 
       const renderItem = ({ item, checkedState }) => {
     return (
