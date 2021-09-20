@@ -1,20 +1,32 @@
-import React, { useState } from "react";
-// import { Dropdown } from "react-native-material-dropdown";
-import { Text , Button, View, StyleSheet, Picker} from "react-native";
-import {Picker} from '@react-native-picker/picker';
+import React, {useState, useEffect}  from "react";
+import { Text , Button, View, StyleSheet} from "react-native";
+import taskService from "../services/tasksService"
+import {Picker} from '@react-native-community/picker';
 
 
 function SelectionScreen({navigation}){
     
-    const [selectedValue, setSelectedValue] = useState("java");
+    const [selectedValue, setSelectedValue] = useState("");
     
-    // let data = [{
-    //     value: "TaskList1"
-    // },
-    // {
-    //     value: "TaskList2"
-    // }]
+    const [tasks , setTasks] = useState([])
     
+    const getAllTasks =  () => {
+        taskService.getTasks()
+        .then(data => {setTasks(data)})
+        .catch(error => {console.error(error)})
+    }
+
+    useEffect(() => {
+        console.log("useEffect called")
+       getAllTasks()
+       
+    }, []);
+      
+
+    let renderTasks = tasks.map((task) => {
+        return( <Picker.Item label ={task.listName} value ={task._id} key ={task.id} /> )
+    })
+
     return (
 
         <View style = {styles.view}>
@@ -22,32 +34,24 @@ function SelectionScreen({navigation}){
             
             <View style ={styles.picker}>
                <Picker 
-                    
                     selectedValue={selectedValue}
                     style={{ height: 50, width:250 }}
                     onValueChange = {(itemValue) => 
-                    setSelectedValue(itemValue)}
-                    >
-
-                    <Picker.Item label = "Hovering" value= "hovering" />
-                    <Picker.Item label = "Dishes" value= "dishes" />
-                    <Picker.Item label = "Laundry" value= "laundry" />
-                    <Picker.Item label = "Shopping" value= "shopping" />
-                    <Picker.Item label = "Walking Pet" value= "walkingPet" />
-                    
+                    setSelectedValue(itemValue)} > 
+                   {renderTasks}
                 </Picker>
             </View>
             
 
             {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
             <Button 
-             title="Add new chore to the list" onPress = {() => {navigation.navigate('Home')}}/>
+             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/>
         </View>
-
-       
-
     )
 }
+
+
+
 
 const styles = StyleSheet.create({
     view:{

@@ -10,7 +10,7 @@ function HomePage ({navigation}) {
 
     return (
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
-                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push('ListScreen')}}>
+                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push('Selection')}}>
                     <Text> Enter </Text>
                 </Pressable>
             </ImageBackground>
