@@ -14,6 +14,7 @@ export default function IndividualTaskScreen1( {editTask} ) {
                     // actions.resetForm();
                     editTask(values);
                     // console.log(values);
+                    
                 }}
             >
                 {(formikprops) => (
