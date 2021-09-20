@@ -18,8 +18,9 @@ export default function App() {
   return (
     
     // this is the home base for our navigation technology
+
     <NavigationContainer>
-       <Stack.Navigator initialRouteName="Home">
+       <Stack.Navigator initialRouteName="Selection">
          <Stack.Screen name="Home" component ={HomePage}/>
          <Stack.Screen name="ListScreen" component ={ListScreen}/>
          <Stack.Screen name="SelectionScreen" component ={SelectionScreen}/>
