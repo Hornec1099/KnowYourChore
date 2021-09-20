@@ -4,19 +4,32 @@ import { Formik } from "formik";
 import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 
-export default function IndividualTaskScreen1( {editTask} ) {
+export default function IndividualTaskScreen1( {editTask, route} ) {
+    
+    const task = route.params
 
+    console.log(task)
+
+    const InitialValues = (task) => {
+        if (task != null){ 
+            return ({task: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo })
+        }
+        else{
+            return ({ task: '' , description: '' , completedBy: '', location: '', assignedTo: '' })
+        }
+    }
+    
     return(
         <View style={globalStyles.background}>
             <Formik
-                initialValues={{ task: '', description: '', completedBy: '', location: '', assignedTo: '' }}
-                onSubmit= { (values, actions) => {
-                    // actions.resetForm();
-                    editTask(values);
+                
+                initialValues={InitialValues(task)}
+                onSubmit={ (values, actions) => {
+                    actions.resetForm();
+                    // editTask(values);
                     // console.log(values);
-                    
-                }}
-            >
+                }}>
+
                 {(formikprops) => (
                     <View>
                         <Text style={globalStyles.headings}> Update Task </Text>
