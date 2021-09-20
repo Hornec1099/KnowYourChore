@@ -92,7 +92,7 @@ function ListScreen ({navigation}) {
         fillColor="orange" unfillColor="darkorange"  
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("Detail")}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("IndividualTaskScreen")}}>
             <Text>{item.taskName}</Text>
         </Pressable>
         <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
