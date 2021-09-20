@@ -4,8 +4,10 @@ db.dropDatabase();
 
 db.tasks.insertMany([{
     "id" :1,
-    "taskList1":[
+    "listName":"Mum List",
+    "taskList":[
             {   "id": 1,
+
                 "taskName": "Deep clean oven",
                 "taskDescription": "Clean oven using products under sink",
                 "taskCompleteBy": "4.00 pm",
@@ -28,7 +30,8 @@ db.tasks.insertMany([{
             }]
         },
         {"id":2,
-        "taskList2":[]
+        "listName":"Dad List",
+        "taskList":[]
     }]
 
 );
