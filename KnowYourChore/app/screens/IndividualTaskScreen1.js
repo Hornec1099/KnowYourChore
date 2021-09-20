@@ -6,6 +6,8 @@ import { globalStyles } from "../styles/global";
 
 export default function IndividualTaskScreen1( {editTask} ) {
 
+    
+
     return(
         <View style={globalStyles.background}>
             <Formik
@@ -14,8 +16,8 @@ export default function IndividualTaskScreen1( {editTask} ) {
                     // actions.resetForm();
                     editTask(values);
                     // console.log(values);
-                }}
-            >
+                }}>
+
                 {(formikprops) => (
                     <View>
                         <Text style={globalStyles.headings}> Update Task </Text>

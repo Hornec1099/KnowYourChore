@@ -4,23 +4,14 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
 import taskService from "../services/tasksService"
 
-function ListScreen ({navigation}) {
+function ListScreen ({navigation, route}) {
 
     const [checkedState , setCheckedState] = useState(false)
-    const [tasks , setTasks] = useState([])
+    const [listData , setListData] = useState([])
     
+    const task = route.params
 
-    useEffect(() => {
-        getAllTasks();
-      }, []);
-      console.log(tasks)
-
-    const getAllTasks = async () => {
-      const response = await taskService.getTasks();
-      setTasks(response);
-  };
-
- 
+    console.log(task.taskList)
   
 
       const renderItem = ({ item}) => {
@@ -30,24 +21,27 @@ function ListScreen ({navigation}) {
         fillColor="orange" unfillColor="darkorange"  
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
+        
         <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("IndividualTaskScreen")}}>
             <Text>{item.taskName}</Text>
         </Pressable>
+
         <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
             <Text> Remove </Text>
         </Pressable>
+
     </View>
     )
   }
 
     return (
         <View style ={style.all}> 
-        <Text style={style.header}> Task List Name Here </Text>
+        <Text style={style.header}> {task.listName} </Text>
         {/* List container with tasks */}
         <View>
          <FlatList
-           data={tasks[0]}
-           keyExtractor={(task)  => task.id.toString()}
+           data={task.taskList}
+           keyExtractor={(task)  => `${task.id}`}
            renderItem={ renderItem } />
         </View>
         <View>

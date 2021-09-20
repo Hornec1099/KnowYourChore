@@ -2,17 +2,17 @@ import React, {useState, useEffect}  from "react";
 import { Text , Button, View, StyleSheet} from "react-native";
 import taskService from "../services/tasksService"
 import {Picker} from '@react-native-community/picker';
+import { Pressable } from "react-native";
 
 
 function SelectionScreen({navigation}){
     
     const [selectedValue, setSelectedValue] = useState("");
-    
-    const [tasks , setTasks] = useState([])
+    const [taskLists , setTaskLists] = useState([])
     
     const getAllTasks =  () => {
         taskService.getTasks()
-        .then(data => {setTasks(data)})
+        .then(data => {setTaskLists(data)})
         .catch(error => {console.error(error)})
     }
 
@@ -21,10 +21,14 @@ function SelectionScreen({navigation}){
        getAllTasks()
        
     }, []);
+
+     const handleValueChange = (itemValue) => {
+         setSelectedValue(itemValue);
+     }
       
 
-    let renderTasks = tasks.map((task) => {
-        return( <Picker.Item label ={task.listName} value ={task._id} key ={task.id} /> )
+    let renderTasks = taskLists.map((taskList) => {
+        return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList.id} /> )
     })
 
     return (
@@ -34,18 +38,27 @@ function SelectionScreen({navigation}){
             
             <View style ={styles.picker}>
                <Picker 
+                    prompt="Choose a List"
                     selectedValue={selectedValue}
                     style={{ height: 50, width:250 }}
-                    onValueChange = {(itemValue) => 
-                    setSelectedValue(itemValue)} > 
-                   {renderTasks}
-                </Picker>
-            </View>
-            
+                    onValueChange = {handleValueChange} > 
 
+                   {renderTasks}
+
+                </Picker>
+                </View>
+
+                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue)}}>
+                    <Text>Go to List</Text>
+                </Pressable>
+
+                
+            
+            
+            
             {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
-            <Button 
-             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/>
+            {/* <Button 
+             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/> */}
         </View>
     )
 }
@@ -76,6 +89,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: 50,
         width:250,
+    },
+    pressableButtons:{
+        alignItems: 'center',
+        alignSelf:'center',
+        margin:10,
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        borderRadius: 25,
+        elevation: 3,
+        backgroundColor: 'lightblue',
     },
 
    
