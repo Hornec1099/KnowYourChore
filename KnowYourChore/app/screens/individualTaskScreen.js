@@ -27,11 +27,11 @@ const options = {
   },
 };
 
-function individualTaskScreen({navigation}) {
+function IndividualTaskScreen ({navigation}) {
 
-    handleSubmit = () => {
-        const value = this._form.getValue();
-      }
+  handleSubmit = () => {
+    const value = this._form.getValue();
+  }
 
     return(
         <View>
@@ -43,4 +43,4 @@ function individualTaskScreen({navigation}) {
     )
 }
 
-export default individualTaskScreen;
+export default IndividualTaskScreen;
