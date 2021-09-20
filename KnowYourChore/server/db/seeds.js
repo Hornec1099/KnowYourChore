@@ -2,7 +2,7 @@ use tasks;
 
 db.dropDatabase();
 
-db.tasks.insertMany([{
+db.taskLists.insertMany(  [  {
     "id" :1,
     "listName":"Mum List",
     "taskList":[

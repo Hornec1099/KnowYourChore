@@ -10,9 +10,9 @@ app.use(cors());
 MongoClient.connect("mongodb://localhost:27017")
     .then((client) => {
   const db = client.db("tasks");
-  const tasksCollection = db.collection("tasks");
-  const tasksRouter = createRouter(tasksCollection);
-  app.use("/api/tasks", tasksRouter);
+  const taskListsCollection = db.collection("tasks");
+  const taskListsRouter = createRouter(taskListsCollection);
+  app.use("/api/taskLists", taskListsRouter);
 })
 .catch(console.error);
 

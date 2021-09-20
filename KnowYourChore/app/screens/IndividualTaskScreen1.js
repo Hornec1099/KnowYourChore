@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, Button, TextInput, View, Text } from "react-native";
 import { Formik } from "formik";
 import { useLinkProps } from "@react-navigation/native";
@@ -6,9 +6,16 @@ import { globalStyles } from "../styles/global";
 
 export default function IndividualTaskScreen1( {editTask, route} ) {
     
+    const [formData, setFormData] = useState({})
+
     const task = route.params
 
-    console.log(task)
+    const handleSubmit = (values) =>{
+        setFormData(values)
+        
+    }
+
+    
 
     const InitialValues = (task) => {
         if (task != null){ 
@@ -25,6 +32,7 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                 
                 initialValues={InitialValues(task)}
                 onSubmit={ (values, actions) => {
+                    handleSubmit(values);
                     actions.resetForm();
                     // editTask(values);
                     // console.log(values);

@@ -29,8 +29,9 @@ router.get('/:id', (req, res) =>{
 });
 
   // Create Route
-    router.post('/', (req, res) => {
+    router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;
+        
         collection
         .insertOne(newTask)
         .then((result) => {
