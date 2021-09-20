@@ -10,7 +10,7 @@ export default function IndividualTaskScreen1( {editTask} ) {
         <View style={globalStyles.background}>
             <Formik
                 initialValues={{ task: '', description: '', completedBy: '', location: '', assignedTo: '' }}
-                onSubmit={ (values, actions) => {
+                onSubmit= { (values, actions) => {
                     // actions.resetForm();
                     editTask(values);
                     // console.log(values);

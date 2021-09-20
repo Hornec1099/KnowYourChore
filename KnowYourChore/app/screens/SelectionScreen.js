@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import { Dropdown } from "react-native-material-dropdown";
 import { Text , Button, View, StyleSheet, Picker} from "react-native";
+import {Picker} from '@react-native-picker/picker';
 
 
 function SelectionScreen({navigation}){
