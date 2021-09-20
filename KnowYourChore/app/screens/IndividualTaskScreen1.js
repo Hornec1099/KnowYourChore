@@ -14,7 +14,6 @@ export default function IndividualTaskScreen1( {editTask} ) {
                     // actions.resetForm();
                     editTask(values);
                     // console.log(values);
-                    const response = ('http://localhost:5000/api/tasks/:id');
                 }}
             >
                 {(formikprops) => (
