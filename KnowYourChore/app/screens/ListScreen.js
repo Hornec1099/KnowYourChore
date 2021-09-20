@@ -1,69 +1,27 @@
-import React, {useState}  from "react";
+import React, {useState, useEffect}  from "react";
 import { Text, FlatList, Button, View, StyleSheet, ScrollView} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
+import taskService from "../services/tasksService"
 
 function ListScreen ({navigation}) {
 
     const [checkedState , setCheckedState] = useState(false)
-    
-    const changeButtonStyling = (state)=>{
-        if (state = false){return style.pressableTasks}
-        else{ return style.markComplete}
-    }
+    const [tasks , setTasks] = useState([])
 
-    let data = [{
-        "id":1,
-        "taskName":"Vacuum"
-    },
-    {
-        "id":2,
-        "taskName":"Wash"
-    },
-    {
-        "id":3,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":4,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":5,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":6,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":7,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":8,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":9,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":10,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":11,
-        "taskName":"Fold Clothes" 
-    },
-    {
-        "id":12,
-        "taskName":"Fold Clothes" 
-    },
-    
-    ]
+    useEffect(() => {
+        getAllTasks();
+      }, []);
+      console.log(tasks)
+    const getAllTasks = async () => {
+      const response = await taskService.getTasks();
+      setTasks(response);
+  };
 
-      const renderItem = ({ item, checkedState }) => {
+ 
+  
+
+      const renderItem = ({ item}) => {
     return (
     <View style ={style.taskContainer}>
         <BouncyCheckbox 
@@ -86,7 +44,7 @@ function ListScreen ({navigation}) {
         {/* List container with tasks */}
         <View>
          <FlatList
-           data={data}
+           data={tasks}
            keyExtractor={(task)  => task.id.toString()}
            renderItem={ renderItem } />
         </View>

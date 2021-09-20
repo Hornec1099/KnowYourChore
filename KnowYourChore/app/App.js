@@ -29,35 +29,3 @@ export default function App() {
 
 
 
-  // const [tasks, setTasks] = useState([]);
-  
-
-  // const getAllTasks = async () => {
-  //     const response = await taskService.getTasks();
-  //     setTasks(response);
-  // };
-
-  // useEffect(() => {
-  //   getAllTasks();
-  // }, []);
-
-  // const renderItem = ({ item }) => {
-  //   return (
-  //     <View>
-  //   <Text> {item.taskName} </Text>
-  //   <Text> {item.taskDescription} </Text>
-  //   <Text> {item.taskLocation} </Text>
-  //   <Text> {item.taskAssignedTo} </Text>
-  //   </View>
-  //   )
-  // }
-
-
-   // <FlatList
-      // data={tasks}
-      // keyExtractor={(task)  => task.id.toString()}
-      // renderItem={ renderItem } />
-
-      // const editTask = (task) => {
-      //   item.id = Math.random();
-      // }
