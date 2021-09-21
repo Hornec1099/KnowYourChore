@@ -2,14 +2,19 @@ import React, {useState, useEffect}  from "react";
 import { Text, FlatList, Button, View, StyleSheet, ScrollView} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
-
+import taskService from "../services/tasksService"
 
 function ListScreen ({navigation, route}) {
 
     const [checkedState , setCheckedState] = useState(false)
-    const task = route.params
-  
-
+    const [taskListId, setTaskListId] = useState("")
+    const [task, setTask] = useState({})  
+    
+    useEffect(() => {
+        console.log("useEffect called")
+       setTask(route.params)
+       
+    }, []);
 
       const renderItem = ({ item}) => {
     return (
@@ -20,7 +25,7 @@ function ListScreen ({navigation, route}) {
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("IndividualTaskScreen", item)}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("UpdateTask", {task :item, taskId:task._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
 
@@ -31,6 +36,8 @@ function ListScreen ({navigation, route}) {
     </View>
     )
   }
+
+
 
     return (
         <View style ={style.all}> 
@@ -51,7 +58,7 @@ function ListScreen ({navigation, route}) {
         </Pressable>
 
         {/* button to navigate to form for new task */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("IndividualTaskScreen")}}>
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("NewTask", {taskId: task._id})}}>
             <Text style ={style.text }> Add New Task </Text>
         </Pressable>
 
