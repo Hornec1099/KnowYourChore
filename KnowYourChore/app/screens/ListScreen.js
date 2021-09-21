@@ -7,14 +7,21 @@ import taskService from "../services/tasksService"
 function ListScreen ({navigation, route}) {
 
     const [checkedState , setCheckedState] = useState(false)
-    const [taskListId, setTaskListId] = useState("")
-    const [task, setTask] = useState({})  
+    const [taskList, setTaskList] = useState({})  
+
     
     useEffect(() => {
-        console.log("useEffect called")
-       setTask(route.params)
-       
+        console.log("useEffect  called")
+        getTaskList(route.params._id)
     }, []);
+
+
+
+    const getTaskList = (id) =>{
+        taskService.getIndividualTask(id)
+        .then(data => {setTaskList(data)})
+        .catch((err) => {console.error(err)})
+    }
 
       const renderItem = ({ item}) => {
     return (
@@ -41,12 +48,12 @@ function ListScreen ({navigation, route}) {
 
     return (
         <View style ={style.all}> 
-        <Text style={style.header}> {task.listName} </Text>
+        <Text style={style.header}> {taskList.listName} </Text>
 
         {/* List container with tasks */}
         <View>
          <FlatList
-           data={task.taskList}
+           data={taskList.taskList}
            keyExtractor={(task)  => `${task.id}`}
            renderItem={ renderItem } />
         </View>
@@ -58,7 +65,7 @@ function ListScreen ({navigation, route}) {
         </Pressable>
 
         {/* button to navigate to form for new task */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("NewTask", {taskId: task._id})}}>
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("NewTask", {taskId: taskList._id})}}>
             <Text style ={style.text }> Add New Task </Text>
         </Pressable>
 

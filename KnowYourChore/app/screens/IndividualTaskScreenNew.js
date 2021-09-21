@@ -16,8 +16,8 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
     const handleSubmit = (values) =>{
         
         const addedData = taskService.addTask(values, taskId)
-        navigation.navigate("Selection")
-        // .catch(error => {console.error(error)})
+        navigation.push('ListScreen', {_id: taskId})
+       
 
     }
 
@@ -28,7 +28,6 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
                 
                 initialValues={{ taskName: '' , description: '' , completedBy: '', location: '', assignedTo: '' }}
                 onSubmit={ (values, actions) => {
-                    console.log(values)
                     handleSubmit(values);
                     actions.resetForm();
                     // editTask(values);

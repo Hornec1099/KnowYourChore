@@ -19,8 +19,7 @@ function SelectionScreen({navigation}){
     useEffect(() => {
         console.log("useEffect called")
        getAllTasks()
-       
-    }, []);
+       }, []);
 
      const handleValueChange = (itemValue) => {
          setSelectedValue(itemValue);
