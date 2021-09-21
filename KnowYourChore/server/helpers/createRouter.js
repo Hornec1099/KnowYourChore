@@ -1,5 +1,6 @@
 const express = require("express");
 const ObjectId = require("mongodb").ObjectId;
+const validation = require('./validation')
 
 const createRouter = function (collection) {
   const router = express.Router();
@@ -31,17 +32,31 @@ router.get('/:id', (req, res) =>{
   // Create Route
     router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;
-        validation(collection, newTask)
-        collection
-        .insertOne(newTask)
-        .then((result) => {
-          res.json(result.ops[0]);
+        const taskListId = req.params.id
+        validation(collection, newTask, taskListId)
+        .then( notFound => {
+        
+        if(notFound){ 
+          collection
+          .updateOne({ _id: ObjectId(taskListId)}, { $addToSet: {taskList: newTask  }})
+          .then((result) => {
+          res.json(result);
         })
-        .catch((err) => {
-          console.error(err);
-          res.status(500);
-          res.json({status: 500, error: err});
-        ;});
+      }
+      }
+        )
+
+
+        // collection
+        // .insertOne(newTask)
+        // .then((result) => {
+        //   res.json(result.ops[0]);
+        // })
+        // .catch((err) => {
+        //   console.error(err);
+        //   res.status(500);
+        //   res.json({status: 500, error: err});
+        // ;});
     })
 
     // Update Route

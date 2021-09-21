@@ -19,8 +19,7 @@ function SelectionScreen({navigation}){
     useEffect(() => {
         console.log("useEffect called")
        getAllTasks()
-       
-    }, []);
+       }, []);
 
      const handleValueChange = (itemValue) => {
          setSelectedValue(itemValue);
@@ -30,6 +29,7 @@ function SelectionScreen({navigation}){
     let renderTasks = taskLists.map((taskList) => {
         return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList.id} /> )
     })
+    
 
     return (
 
@@ -47,8 +47,8 @@ function SelectionScreen({navigation}){
 
                 </Picker>
                 </View>
-
-                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue)}}>
+                
+                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
                     <Text>Go to List</Text>
                 </Pressable>
 

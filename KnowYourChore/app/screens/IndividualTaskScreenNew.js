@@ -5,38 +5,28 @@ import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 import taskService from "../services/tasksService";
 
-export default function IndividualTaskScreen1( {editTask, route} ) {
+export default function IndividualTaskScreenNew( {editTask, route,navigation} ) {
     
-    const [formData, setFormData] = useState({})
 
-    const {task, taskId} = route.params
+    const {taskId} = route.params
 
     console.log(taskId)
 
 
     const handleSubmit = (values) =>{
         
-        taskService.addTask(values)
-        // .catch(error => {console.error(error)})
+        const addedData = taskService.addTask(values, taskId)
+        navigation.navigate('ListScreen', {_id: taskId})
+       
 
     }
 
-    
-
-    const InitialValues = (task) => {
-        if (task != null){ 
-            return ({taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo })
-        }
-        else{
-            return ({ task: '' , description: '' , completedBy: '', location: '', assignedTo: '' })
-        }
-    }
     
     return(
         <View style={globalStyles.background}>
             <Formik
                 
-                initialValues={InitialValues(task)}
+                initialValues={{ taskName: '' , description: '' , completedBy: '', location: '', assignedTo: '' }}
                 onSubmit={ (values, actions) => {
                     handleSubmit(values);
                     actions.resetForm();
@@ -50,7 +40,7 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Task'
-                            onChangeText={formikprops.handleChange('task')}
+                            onChangeText={formikprops.handleChange('taskName')}
                             value={formikprops.values.taskName}
                         />
 
