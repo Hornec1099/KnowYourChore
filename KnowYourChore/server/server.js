@@ -10,7 +10,7 @@ app.use(cors());
 MongoClient.connect("mongodb://localhost:27017")
     .then((client) => {
   const db = client.db("tasks");
-  const taskListsCollection = db.collection("taskList");
+  const taskListsCollection = db.collection("taskLists");
   const taskListsRouter = createRouter(taskListsCollection);
   app.use("/api/taskLists", taskListsRouter);
 })
