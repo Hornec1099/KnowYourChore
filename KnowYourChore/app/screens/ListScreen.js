@@ -15,7 +15,7 @@ function ListScreen ({navigation, route}) {
     useEffect(() => {
         console.log("useEffect called in list screen")
         getTaskList(route.params._id)
-        setTaskList ({})
+        
     }, []);
 
     // called to get the taskList data to Shown as FlatList
@@ -41,7 +41,7 @@ function ListScreen ({navigation, route}) {
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:item._id})}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("UpdateTask", {task :item, taskId:taskList._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
 
@@ -69,12 +69,12 @@ function ListScreen ({navigation, route}) {
 
         <View>
         {/* button to navigate to selection */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Selection")}}>
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.navigate("Selection")}}>
             <Text style ={style.text }> Back to Selection </Text>
         </Pressable>
 
         {/* button to navigate to form for new task */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("NewTask", {taskId: taskList._id})}}>
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.navigate("NewTask", {taskId: taskList._id})}}>
             <Text style ={style.text }> Add New Task </Text>
         </Pressable>
 

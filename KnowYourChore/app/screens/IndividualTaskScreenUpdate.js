@@ -5,7 +5,7 @@ import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 import taskService from "../services/tasksService";
 
-export default function IndividualTaskScreen1( {editTask, route} ) {
+export default function IndividualTaskScreen1( {editTask, route, navigation} ) {
     
     const {task, taskId} = route.params
 
@@ -23,11 +23,10 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
         <View style={globalStyles.background}>
             <Formik
                 
-                initialValues={{taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo }}
+                initialValues={{taskName: task.taskName , taskDescription: task.taskDescription, taskCompleteBy: task.taskCompleteBy, taskLocation: task.taskLocation, taskAssignedTo: task.taskAssignedTo }}
                 onSubmit={ (values) => {
                     handleSubmit(values);
-                    // editTask(values);
-                    // console.log(values);
+                   
                 }}>
 
                 {(formikprops) => (
@@ -44,29 +43,29 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                             multiline
                             style={globalStyles.input}
                             placeholder='Task Description'
-                            onChangeText={formikprops.handleChange('description')}
-                            value={formikprops.values.description}
+                            onChangeText={formikprops.handleChange('taskDescription')}
+                            value={formikprops.values.taskDescription}
                         />
 
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Completed By'
-                            onChangeText={formikprops.handleChange('completedBy')}
-                            value={formikprops.values.completedBy}
+                            onChangeText={formikprops.handleChange('taskCompleteBy')}
+                            value={formikprops.values.taskCompleteBy}
                         />
 
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Location'
-                            onChangeText={formikprops.handleChange('location')}
-                            value={formikprops.values.location}
+                            onChangeText={formikprops.handleChange('taskLocation')}
+                            value={formikprops.values.taskLocation}
                         />
 
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Assigned To'
-                            onChangeText={formikprops.handleChange('assignedTo')}
-                            value={formikprops.values.assignedTo}
+                            onChangeText={formikprops.handleChange('taskAssignedTo')}
+                            value={formikprops.values.taskAssignedTo}
                         />
                         <Button style={globalStyles.button} title= 'Save Changes' onPress={formikprops.handleSubmit} />
                     </View>
