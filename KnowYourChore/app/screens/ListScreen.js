@@ -1,5 +1,5 @@
 import React, {useState, useEffect}  from "react";
-import { Text, FlatList, Button, View, StyleSheet, ScrollView} from "react-native";
+import { Text, FlatList, View, StyleSheet, ScrollView} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
 import taskService from "../services/tasksService"
@@ -32,7 +32,7 @@ function ListScreen ({navigation, route}) {
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("UpdateTask", {task :item, taskId:task._id})}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:task._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
 
@@ -54,7 +54,7 @@ function ListScreen ({navigation, route}) {
         <View>
          <FlatList
            data={taskList.taskList}
-           keyExtractor={(task)  => `${task.id}`}
+           keyExtractor={(task)  => `${task.taskName}`}
            renderItem={ renderItem } />
         </View>
 
