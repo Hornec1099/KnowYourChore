@@ -11,17 +11,17 @@ function ListScreen ({navigation, route}) {
 
     
     useEffect(() => {
+        
         console.log("useEffect  called")
         getTaskList(route.params._id)
     }, []);
-
-
 
     const getTaskList = (id) =>{
         taskService.getIndividualTask(id)
         .then(data => {setTaskList(data)})
         .catch((err) => {console.error(err)})
     }
+
 
       const renderItem = ({ item}) => {
     return (
