@@ -7,8 +7,6 @@ import taskService from "../services/tasksService";
 
 export default function IndividualTaskScreen1( {editTask, route} ) {
     
-    const [formData, setFormData] = useState({})
-
     const {task, taskId} = route.params
 
     console.log(taskId)
@@ -19,18 +17,6 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
         taskService.addTask(values, taskId)
         navigation.push('ListScreen', {_id: taskId})
        
-
-    }
-
-    
-
-    const InitialValues = (task) => {
-        if (task != null){ 
-            return ({taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo }
-        })
-        else{
-            return ({ task: '' , description: '' , completedBy: '', location: '', assignedTo: '' })
-        }
     }
     
     return(

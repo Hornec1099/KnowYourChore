@@ -22,6 +22,10 @@ function ListScreen ({navigation, route}) {
         .catch((err) => {console.error(err)})
     }
 
+    const handleDelete = (task) => {
+        taskService.deleteTask(task, taskList._id);
+        navigation.navigate("ListScreen", taskList )
+    }
 
       const renderItem = ({ item}) => {
     return (
@@ -36,7 +40,7 @@ function ListScreen ({navigation, route}) {
             <Text>{item.taskName}</Text>
         </Pressable>
 
-        <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
+        <Pressable style = {style.pressableDelete} onPress={() =>{handleDelete(item)}}>
             <Text> Remove </Text>
         </Pressable>
 

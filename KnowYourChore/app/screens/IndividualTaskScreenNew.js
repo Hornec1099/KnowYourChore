@@ -18,7 +18,6 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
         taskService.addTask(values, taskId)
         navigation.push('ListScreen', {_id: taskId})
        
-
     }
 
     
