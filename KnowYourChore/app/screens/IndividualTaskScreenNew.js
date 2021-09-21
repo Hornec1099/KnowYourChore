@@ -35,7 +35,7 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
 
                 {(formikprops) => (
                     <View>
-                        <Text style={globalStyles.headings}> Update Task </Text>
+                        <Text style={globalStyles.headings}> Add Task </Text>
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Task'

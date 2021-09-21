@@ -28,7 +28,7 @@ function ListScreen ({navigation, route}) {
 
     const handleDelete = (task) => {
         taskService.deleteTask(task, taskList._id);
-        navigation.navigate("ListScreen", taskList )
+        navigation.replace('ListScreen', taskList)
     }
 
       const renderItem = ({ item}) => {
@@ -40,7 +40,7 @@ function ListScreen ({navigation, route}) {
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:task._id})}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:item._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
 

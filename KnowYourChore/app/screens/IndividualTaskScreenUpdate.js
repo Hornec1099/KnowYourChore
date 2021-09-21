@@ -15,7 +15,7 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
     const handleSubmit = (values) =>{
         
         taskService.addTask(values, taskId)
-        navigation.push('ListScreen', {_id: taskId})
+        navigation.replace('ListScreen', {_id: taskId})
        
     }
     
@@ -24,9 +24,8 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
             <Formik
                 
                 initialValues={{taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo }}
-                onSubmit={ (values, actions) => {
+                onSubmit={ (values) => {
                     handleSubmit(values);
-                    actions.resetForm();
                     // editTask(values);
                     // console.log(values);
                 }}>
@@ -37,7 +36,7 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Task'
-                            onChangeText={formikprops.handleChange('task')}
+                            onChangeText={formikprops.handleChange('taskName')}
                             value={formikprops.values.taskName}
                         />
 
