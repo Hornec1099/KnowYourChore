@@ -30,7 +30,7 @@ function SelectionScreen({navigation}){
       
     //  renders all options available that will then be used in Picker
     let renderTasks = taskLists.map((taskList) => {
-        return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList.id} /> )
+        return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList._id} /> )
     })
     
 
@@ -53,6 +53,10 @@ function SelectionScreen({navigation}){
                 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
                     <Text>Go to List</Text>
+                </Pressable>
+
+                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
+                    <Text> Add New List</Text>
                 </Pressable>
 
         </View>

@@ -5,7 +5,7 @@ const validation = require('./validation')
 const createRouter = function (collection) {
   const router = express.Router();
 
-  //   Index Route
+  //   Index Route for all TaskLists
   router.get("/", (req, res) => {
     collection
       .find()
@@ -17,7 +17,36 @@ const createRouter = function (collection) {
         res.json({ status: 500, error: error });
       })});
 
-  // Create Route
+    //   SHOW Route to get Individual TaskLists
+router.get('/:id', (req, res) =>{
+    collection
+    .findOne( { _id: ObjectId(req.params.id) } )
+    .then( (result) => { res.json(result)})
+    .catch((error) => {
+        console.error(error);
+        res.status(500);
+        res.json({ status: 500, error: error })
+    })
+});
+
+// Create Route for TaskLists
+router.post('/', (req, res) => {
+  const newTaskList = req.body;
+  collection
+  .insertOne(newTaskList)
+  .then((result) => {
+    newTaskList["_id"] = result["insertedId"]
+    console.log(newTaskList)
+    res.json( newTaskList )
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500);
+    res.json({ status: 500, error: err})
+  })
+})
+
+  // Create Route for Tasks
     router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;
         const taskListId = req.params.id
@@ -35,7 +64,7 @@ const createRouter = function (collection) {
       })
 
    
-    // Delete Route
+    // Delete Route for removing Task
     router.put('/:id/delete', (req, res) => {
         const id = req.params.id;
         const deleteTask = req.body;
@@ -51,26 +80,7 @@ const createRouter = function (collection) {
             }
           )
         })
-      ;
-
-
-     // Update Route
-     router.put('/:id', (req, res) => {
-      const id = req.params.id;
-      const updatedData = req.body;
-      delete updatedData.__dirname;
-
-      collection
-      .updateOne({ _id: ObjectId(id)}, { $set: updatedData})
-      .then(result => {
-          res.json(result);
-      })
-      .catch((error) => {
-          res.status(500);
-          res.json({ status: 500, error: error});
-      });
-  });
 
   return router;
-};
+}
 module.exports = createRouter;
