@@ -38,9 +38,13 @@ const taskService = {
     },
 
   
-    deleteTask(id){
-        return fetch(baseUrl + id, {
-            method: 'DELETE'
+    deleteTask(task, taskListId){
+        return fetch(`${baseUrl}${taskListId}/delete`, {
+            method: 'PUT',
+            body: JSON.stringify(task),
+            headers: {
+              'Content-Type': 'application/json'
+            }
         });
     }
 };

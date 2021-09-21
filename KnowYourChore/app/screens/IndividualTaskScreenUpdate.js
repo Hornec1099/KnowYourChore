@@ -7,8 +7,6 @@ import taskService from "../services/tasksService";
 
 export default function IndividualTaskScreen1( {editTask, route} ) {
     
-    const [formData, setFormData] = useState({})
-
     const {task, taskId} = route.params
 
     console.log(taskId)
@@ -16,27 +14,16 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
 
     const handleSubmit = (values) =>{
         
-        taskService.addTask(values)
-        // .catch(error => {console.error(error)})
-
-    }
-
-    
-
-    const InitialValues = (task) => {
-        if (task != null){ 
-            return ({taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo })
-        }
-        else{
-            return ({ task: '' , description: '' , completedBy: '', location: '', assignedTo: '' })
-        }
+        taskService.addTask(values, taskId)
+        navigation.push('ListScreen', {_id: taskId})
+       
     }
     
     return(
         <View style={globalStyles.background}>
             <Formik
                 
-                initialValues={InitialValues(task)}
+                initialValues={{taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo }}
                 onSubmit={ (values, actions) => {
                     handleSubmit(values);
                     actions.resetForm();

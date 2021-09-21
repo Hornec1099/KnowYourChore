@@ -14,16 +14,21 @@ function ListScreen ({navigation, route}) {
 
     useEffect(() => {
         console.log("useEffect called in list screen")
+        
+        console.log("useEffect  called")
         getTaskList(route.params._id)
         setTaskList ({})
     }, []);
-
-
 
     const getTaskList = (id) =>{
         taskService.getIndividualTask(id)
         .then(data => {setTaskList(data)})
         .catch((err) => {console.error(err)})
+    }
+
+    const handleDelete = (task) => {
+        taskService.deleteTask(task, taskList._id);
+        navigation.navigate("ListScreen", taskList )
     }
 
       const renderItem = ({ item}) => {
@@ -39,7 +44,7 @@ function ListScreen ({navigation, route}) {
             <Text>{item.taskName}</Text>
         </Pressable>
 
-        <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
+        <Pressable style = {style.pressableDelete} onPress={() =>{handleDelete(item)}}>
             <Text> Remove </Text>
         </Pressable>
 

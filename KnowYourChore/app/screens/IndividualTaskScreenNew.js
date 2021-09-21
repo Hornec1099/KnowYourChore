@@ -16,9 +16,9 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
     const handleSubmit = (values) =>{
         
         const addedData = taskService.addTask(values, taskId)
+        taskService.addTask(values, taskId)
         navigation.push('ListScreen', {_id: taskId})
        
-
     }
 
     
