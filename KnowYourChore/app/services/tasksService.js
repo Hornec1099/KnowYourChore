@@ -1,4 +1,4 @@
-const baseUrl = "http://192.168.1.45:5000/api/tasks/";
+const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
 
 const taskService = {
     getTasks() {
@@ -14,7 +14,7 @@ const taskService = {
     
 
     addTask(task) {
-        return fetch(baseUrl, {
+        return fetch(baseUrl , {
         method: 'POST',
         body: JSON.stringify(task),
         headers: {

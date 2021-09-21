@@ -31,7 +31,7 @@ router.get('/:id', (req, res) =>{
   // Create Route
     router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;
-        
+        validation(collection, newTask)
         collection
         .insertOne(newTask)
         .then((result) => {

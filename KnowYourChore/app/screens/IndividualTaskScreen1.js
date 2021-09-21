@@ -3,6 +3,7 @@ import { StyleSheet, Button, TextInput, View, Text } from "react-native";
 import { Formik } from "formik";
 import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
+import taskService from "../services/tasksService";
 
 export default function IndividualTaskScreen1( {editTask, route} ) {
     
@@ -11,15 +12,17 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
     const task = route.params
 
     const handleSubmit = (values) =>{
-        setFormData(values)
-        
+        console.log(values)
+        taskService.addTask(values)
+        // .catch(error => {console.error(error)})
+
     }
 
     
 
     const InitialValues = (task) => {
         if (task != null){ 
-            return ({task: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo })
+            return ({taskName: task.taskName , description: task.taskDescription, completedBy: task.taskCompleteBy, location: task.taskLocation, assignedTo: task.taskAssignedTo })
         }
         else{
             return ({ task: '' , description: '' , completedBy: '', location: '', assignedTo: '' })
@@ -45,7 +48,7 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                             style={globalStyles.input}
                             placeholder='Task'
                             onChangeText={formikprops.handleChange('task')}
-                            value={formikprops.values.task}
+                            value={formikprops.values.taskName}
                         />
 
                         <TextInput 
@@ -77,7 +80,6 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
                             value={formikprops.values.assignedTo}
                         />
                         <Button style={globalStyles.button} title= 'Save Changes' onPress={formikprops.handleSubmit} />
-                        <Button style={globalStyles.button} title= 'Go back to Task List' onPress={() => {navigation.push('ListScreen')}} />
                     </View>
                 )}
             </Formik>
