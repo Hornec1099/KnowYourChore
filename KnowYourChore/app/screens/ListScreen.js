@@ -10,9 +10,12 @@ function ListScreen ({navigation, route}) {
     const [taskList, setTaskList] = useState({})  
 
     
+
+
     useEffect(() => {
-        console.log("useEffect  called")
+        console.log("useEffect called in list screen")
         getTaskList(route.params._id)
+        setTaskList ({})
     }, []);
 
 

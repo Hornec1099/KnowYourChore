@@ -16,7 +16,7 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
     const handleSubmit = (values) =>{
         
         const addedData = taskService.addTask(values, taskId)
-        navigation.navigate('ListScreen', {_id: taskId})
+        navigation.push('ListScreen', {_id: taskId})
        
 
     }
@@ -27,9 +27,8 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
             <Formik
                 
                 initialValues={{ taskName: '' , description: '' , completedBy: '', location: '', assignedTo: '' }}
-                onSubmit={ (values, actions) => {
+                onSubmit={ (values) => {
                     handleSubmit(values);
-                    actions.resetForm();
                     // editTask(values);
                     // console.log(values);
                 }}>

@@ -17,7 +17,7 @@ function SelectionScreen({navigation}){
     }
 
     useEffect(() => {
-        console.log("useEffect called")
+        console.log("useEffect called in selection")
        getAllTasks()
        }, []);
 
