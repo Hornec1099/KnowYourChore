@@ -10,22 +10,25 @@ function SelectionScreen({navigation}){
     const [selectedValue, setSelectedValue] = useState("");
     const [taskLists , setTaskLists] = useState([])
     
+    // gets all task information from data set getting actual task List names and not individual tasks
     const getAllTasks =  () => {
         taskService.getTasks()
         .then(data => {setTaskLists(data)})
         .catch(error => {console.error(error)})
     }
 
+    // use effect to call tasks on rendering
     useEffect(() => {
         console.log("useEffect called in selection")
        getAllTasks()
        }, []);
 
+    //    used within the Picker to change selected value
      const handleValueChange = (itemValue) => {
          setSelectedValue(itemValue);
      }
       
-
+    //  renders all options available that will then be used in Picker
     let renderTasks = taskLists.map((taskList) => {
         return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList.id} /> )
     })
@@ -52,13 +55,6 @@ function SelectionScreen({navigation}){
                     <Text>Go to List</Text>
                 </Pressable>
 
-                
-            
-            
-            
-            {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
-            {/* <Button 
-             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/> */}
         </View>
     )
 }

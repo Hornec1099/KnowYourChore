@@ -17,18 +17,6 @@ const createRouter = function (collection) {
         res.json({ status: 500, error: error });
       })});
 
-    //   SHOW Route
-router.get('/:id', (req, res) =>{
-    collection
-    .findOne( { _id: ObjectId(req.params.id) } )
-    .then( (result) => { res.json(result)})
-    .catch((error) => {
-        console.error(error);
-        res.status(500);
-        res.json({ status: 500, error: error })
-    })
-});
-
   // Create Route
     router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;

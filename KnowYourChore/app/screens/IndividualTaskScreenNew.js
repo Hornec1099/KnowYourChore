@@ -7,15 +7,12 @@ import taskService from "../services/tasksService";
 
 export default function IndividualTaskScreenNew( {editTask, route,navigation} ) {
     
-
+    // params passed from previous page on application
     const {taskId} = route.params
 
-    console.log(taskId)
-
-
+    
+    // handles submission of Form data to update DB and navigate to List page
     const handleSubmit = (values) =>{
-        
-        const addedData = taskService.addTask(values, taskId)
         taskService.addTask(values, taskId)
         navigation.replace('ListScreen', {_id: taskId})
        
@@ -24,6 +21,7 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
     
     return(
         <View style={globalStyles.background}>
+            {/* Form component defining form */}
             <Formik
                 
                 initialValues={{ taskName: '' , description: '' , completedBy: '', location: '', assignedTo: '' }}
@@ -32,7 +30,7 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
                     // editTask(values);
                     // console.log(values);
                 }}>
-
+                    {/* inside form with each field element */}
                 {(formikprops) => (
                     <View>
                         <Text style={globalStyles.headings}> Add Task </Text>
