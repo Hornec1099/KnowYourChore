@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, ImageBackground, StyleSheet, Pressable} from "react-native";
 
-
+const logo = require('../assets/logo.png')
 
 
 function HomePage ({navigation}) {
@@ -24,15 +24,12 @@ const styles = StyleSheet.create({
         justifyContent:"flex-end",
         backgroundColor:"white"
         },
-    button:{
-        height: 100,
-    },
     pressableButtons:{
         alignItems: 'center',
         alignSelf:'center',
         margin:10,
         paddingVertical: 10,
-        paddingHorizontal: 25,
+        paddingHorizontal: 100,
         borderRadius: 25,
         elevation: 3,
         backgroundColor: 'lightblue',

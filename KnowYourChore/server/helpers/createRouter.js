@@ -1,5 +1,6 @@
 const express = require("express");
 const ObjectId = require("mongodb").ObjectId;
+const validation = require('./validation')
 
 const createRouter = function (collection) {
   const router = express.Router();
@@ -14,7 +15,7 @@ const createRouter = function (collection) {
         console.error(error);
         res.status(500);
         res.json({ status: 500, error: error });
-      });
+      })});
 
     //   SHOW Route
 router.get('/:id', (req, res) =>{
@@ -29,54 +30,59 @@ router.get('/:id', (req, res) =>{
 });
 
   // Create Route
-    router.post('/', (req, res) => {
+    router.post('/:id/tasks', (req, res) => {
         const newTask = req.body;
-        collection
-        .insertOne(newTask)
-        .then((result) => {
-          res.json(result.ops[0]);
-        })
-        .catch((err) => {
-          console.error(err);
-          res.status(500);
-          res.json({status: 500, error: err});
-        ;});
-    })
+        const taskListId = req.params.id
+        validation(collection, newTask, taskListId)
+        .then( Found => {
+        
+        if(Found){ 
+          collection
+          .updateOne({ _id: ObjectId(taskListId)}, { $addToSet: {taskList: newTask  }})
+          .then((result) => {
+              res.json(result);
+            }
+          )} 
+        }) 
+      })
 
-    // Update Route
-    router.put('/:id', (req, res) => {
-        const id = req.params.id;
-        const updatedData = req.body;
-        delete updatedData.__dirname;
-
-        collection
-        .updateOne({ _id: ObjectId(id)}, { $set: updatedData})
-        .then(result => {
-            res.json(result);
-        })
-        .catch((error) => {
-            res.status(500);
-            res.json({ status: 500, error: error});
-        });
-    });
-
+   
     // Delete Route
-    router.delete('/:id', (req, res) => {
+    router.put('/:id/delete', (req, res) => {
         const id = req.params.id;
-        collection
-        .deleteOne({ _id: ObjectId(id)})
-        .then(result => {
-            res.json(result);
+        const deleteTask = req.body;
+            collection
+            .updateOne({ _id: ObjectId(id)}, { $pull : {taskList: deleteTask }})
+            .then(result => {
+                res.json(result);
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500);
+              res.json({ status: 500, error: error });
+            }
+          )
         })
-        .catch((error) => {
-            console.error(error);
-            res.status(500);
-            res.json({ status: 500, error: error });
-        });
-    })
-  
+      ;
 
-   });
+
+     // Update Route
+     router.put('/:id', (req, res) => {
+      const id = req.params.id;
+      const updatedData = req.body;
+      delete updatedData.__dirname;
+
+      collection
+      .updateOne({ _id: ObjectId(id)}, { $set: updatedData})
+      .then(result => {
+          res.json(result);
+      })
+      .catch((error) => {
+          res.status(500);
+          res.json({ status: 500, error: error});
+      });
+  });
+
   return router;
 };
 module.exports = createRouter;

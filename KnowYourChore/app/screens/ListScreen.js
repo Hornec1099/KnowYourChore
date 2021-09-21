@@ -1,64 +1,82 @@
 import React, {useState, useEffect}  from "react";
-import { Text, FlatList, Button, View, StyleSheet, ScrollView} from "react-native";
+import { Text, FlatList, View, StyleSheet, ScrollView} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Pressable } from "react-native";
 import taskService from "../services/tasksService"
 
-function ListScreen ({navigation}) {
+function ListScreen ({navigation, route}) {
 
     const [checkedState , setCheckedState] = useState(false)
-    const [tasks , setTasks] = useState([])
+    const [taskList, setTaskList] = useState({})  
+
     
 
+
     useEffect(() => {
-        getAllTasks();
-      }, []);
-      console.log(tasks)
+        console.log("useEffect called in list screen")
+        
+        console.log("useEffect  called")
+        getTaskList(route.params._id)
+        setTaskList ({})
+    }, []);
 
-    const getAllTasks = async () => {
-      const response = await taskService.getTasks();
-      setTasks(response);
-  };
+    const getTaskList = (id) =>{
+        taskService.getIndividualTask(id)
+        .then(data => {setTaskList(data)})
+        .catch((err) => {console.error(err)})
+    }
 
- 
-  
+    const handleDelete = (task) => {
+        taskService.deleteTask(task, taskList._id);
+        navigation.replace('ListScreen', taskList)
+    }
 
       const renderItem = ({ item}) => {
     return (
+
     <View style ={style.taskContainer}>
         <BouncyCheckbox 
-        fillColor="orange" unfillColor="darkorange"  
+        fillColor="green" unfillColor="red"  
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.push("IndividualTaskScreen")}}>
+        
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:item._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
-        <Pressable style = {style.pressableDelete} onPress={() =>{console.log("delete goes here")}}>
+
+        <Pressable style = {style.pressableDelete} onPress={() =>{handleDelete(item)}}>
             <Text> Remove </Text>
         </Pressable>
+
     </View>
     )
   }
 
+
+
     return (
         <View style ={style.all}> 
-        <Text style={style.header}> Task List Name Here </Text>
+        <Text style={style.header}> {taskList.listName} </Text>
+
         {/* List container with tasks */}
         <View>
          <FlatList
-           data={tasks[0]}
-           keyExtractor={(task)  => task.id.toString()}
+           data={taskList.taskList}
+           keyExtractor={(task)  => `${task.taskName}`}
            renderItem={ renderItem } />
         </View>
+
         <View>
-        {/* button to navigate to home page */}
+        {/* button to navigate to selection */}
         <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Selection")}}>
             <Text style ={style.text }> Back to Selection </Text>
         </Pressable>
-        {/* button to navigate to form for new task list */}
-        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("Detail")}}>
+
+        {/* button to navigate to form for new task */}
+        <Pressable style = {style.pressableButtons} onPress={() => {navigation.push("NewTask", {taskId: taskList._id})}}>
             <Text style ={style.text }> Add New Task </Text>
         </Pressable>
+
         </View>
         </View>
     )

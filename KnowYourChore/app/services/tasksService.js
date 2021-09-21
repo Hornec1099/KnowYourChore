@@ -1,4 +1,5 @@
-const baseUrl = "http://192.168.1.45:5000/api/tasks/";
+// const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
+const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
 
 const taskService = {
     getTasks() {
@@ -13,11 +14,12 @@ const taskService = {
       },
     
 
-    addTask(task) {
-        return fetch(baseUrl, {
+    addTask(task, taskListId) {
+        return fetch(`${baseUrl}${taskListId}/tasks`  , {
         method: 'POST',
         body: JSON.stringify(task),
         headers: {
+            'Accept' : 'application/json',
             'Content-Type': 'application/json'
         }
         })
@@ -36,9 +38,13 @@ const taskService = {
     },
 
   
-    deleteTask(id){
-        return fetch(baseUrl + id, {
-            method: 'DELETE'
+    deleteTask(task, taskListId){
+        return fetch(`${baseUrl}${taskListId}/delete`, {
+            method: 'PUT',
+            body: JSON.stringify(task),
+            headers: {
+              'Content-Type': 'application/json'
+            }
         });
     }
 };

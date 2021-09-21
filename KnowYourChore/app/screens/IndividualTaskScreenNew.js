@@ -1,29 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, Button, TextInput, View, Text } from "react-native";
 import { Formik } from "formik";
 import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
+import taskService from "../services/tasksService";
 
-export default function IndividualTaskScreen1( {editTask} ) {
+export default function IndividualTaskScreenNew( {editTask, route,navigation} ) {
+    
 
+    const {taskId} = route.params
+
+    console.log(taskId)
+
+
+    const handleSubmit = (values) =>{
+        
+        const addedData = taskService.addTask(values, taskId)
+        taskService.addTask(values, taskId)
+        navigation.replace('ListScreen', {_id: taskId})
+       
+    }
+
+    
     return(
         <View style={globalStyles.background}>
             <Formik
-                initialValues={{ task: '', description: '', completedBy: '', location: '', assignedTo: '' }}
-                onSubmit={ (values, actions) => {
-                    // actions.resetForm();
-                    editTask(values);
+                
+                initialValues={{ taskName: '' , description: '' , completedBy: '', location: '', assignedTo: '' }}
+                onSubmit={ (values) => {
+                    handleSubmit(values);
+                    // editTask(values);
                     // console.log(values);
-                }}
-            >
+                }}>
+
                 {(formikprops) => (
                     <View>
-                        <Text style={globalStyles.headings}> Update Task </Text>
+                        <Text style={globalStyles.headings}> Add Task </Text>
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Task'
-                            onChangeText={formikprops.handleChange('task')}
-                            value={formikprops.values.task}
+                            onChangeText={formikprops.handleChange('taskName')}
+                            value={formikprops.values.taskName}
                         />
 
                         <TextInput 
@@ -55,7 +72,6 @@ export default function IndividualTaskScreen1( {editTask} ) {
                             value={formikprops.values.assignedTo}
                         />
                         <Button style={globalStyles.button} title= 'Save Changes' onPress={formikprops.handleSubmit} />
-                        <Button style={globalStyles.button} title= 'Go back to Task List' onPress={() => {navigation.push('ListScreen')}} />
                     </View>
                 )}
             </Formik>
