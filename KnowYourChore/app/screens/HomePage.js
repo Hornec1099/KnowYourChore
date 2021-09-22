@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
     background:{
         flex:1,
         justifyContent:"flex-end",
-        backgroundColor:"white"
-        },
+        backgroundColor:"white",
+        
+    },
     pressableButtons:{
         alignItems: 'center',
         alignSelf:'center',
@@ -35,6 +36,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         elevation: 3,
         backgroundColor: '#7fcef0',
+        position: "absolute",
+        bottom: 50,
         
         
     },
