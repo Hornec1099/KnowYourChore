@@ -84,19 +84,26 @@ router.post('/', (req, res) => {
 
 
      // Update Route
-     router.put('/:id', (req, res) => {
+     router.put('/:id/tasks/:taskName', (req, res) => {
       const id = req.params.id;
       const updatedTask = req.body;
-      delete updatedTask.__dirname;
-      collection
-      .updateOne({ _id: ObjectId(id)}, { $pull: {taskList: updatedTask}})
-      .then(result => {
+      const taskName = req.params.taskName;
+      validation(collection, updatedTask, id)
+      .then (isFound => {
+        if (!isFound){
+        collection
+        .updateOne({ _id: ObjectId(id)}, { $pull: {taskList: updatedTask.taskName}})
+        .then(collection.updateOne({ _id: ObjectId(id)}, { $addToSet: {taskList: updatedTask}}))
+        .then(result => {
           res.json(result);
-      })
-      .catch((error) => {
+        })
+        .catch((error) => {
           res.status(500);
           res.json({ status: 500, error: error});
-      });
+        });
+        }
+      })
+      
   });
 
   return router;

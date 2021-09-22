@@ -1,5 +1,5 @@
-const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
-// const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
+// const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
+const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
 
 const taskService = {
   // returns all task Lists
@@ -38,9 +38,9 @@ const taskService = {
         })
         .then(res => res.json())
       },
-
+// updates task to Tasklist array
     updateTask(task, taskListId) {
-        return fetch(`${baseUrl}${taskListId}`, {
+        return fetch(`${baseUrl}${taskListId}/tasks/${task.taskName}`, {
           method: 'PUT',
           body: JSON.stringify(task),
           headers: {

@@ -31,13 +31,6 @@ function ListScreen ({navigation, route}) {
         navigation.replace('ListScreen', taskList)
     }
 
-    // const handleUpdate = (id) => {
-    //     taskService.getIndividualTask(id)
-    //     taskService.updateTask(task, task.id);
-    //     navigation.replace('ListScreen', taskList)
-    // }
-
-    // renders a new Task Item row within the FlatList using the Data Provided
       const renderItem = ({ item}) => {
     return (
 
@@ -47,7 +40,7 @@ function ListScreen ({navigation, route}) {
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
         
-        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:item._id})}}>
+        <Pressable style = {style.pressableTasks} onPress={() => {navigation.navigate("UpdateTask", {task :item, taskId:taskList._id})}}>
             <Text>{item.taskName}</Text>
         </Pressable>
 
