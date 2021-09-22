@@ -3,6 +3,7 @@ import { Text , Button, View, StyleSheet} from "react-native";
 import taskService from "../services/tasksService"
 import {Picker} from '@react-native-community/picker';
 import { Pressable } from "react-native";
+import {selectionStyles} from '../styles/SelectionStyles'
 
 
 function SelectionScreen({navigation}){
@@ -36,10 +37,10 @@ function SelectionScreen({navigation}){
 
     return (
 
-        <View style = {styles.view}>
-            <Text style ={styles.text}> Choose Your Chores </Text>
+        <View style = {selectionStyles.view}>
+            <Text style ={selectionStyles.text}> Choose Your Chores </Text>
             
-            <View style ={styles.pickerView}>
+            <View style ={selectionStyles.pickerView}>
                <Picker 
                     style = {{height: 50, width:250, color: 'black'}} 
                     itemstyle = {{backgroundColor: 'white', borderColor: '#0044b4', borderWidth: 100}}
@@ -53,80 +54,16 @@ function SelectionScreen({navigation}){
                 </Picker>
                 </View>
                 
-                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
-                    <Text style = {styles.buttonText}>Go to List</Text>
+                <Pressable style = {selectionStyles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
+                    <Text style = {selectionStyles.buttonText}>Go to List</Text>
                 </Pressable>
 
-                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
-                    <Text style ={styles.buttonText}> Add New List</Text>
+                <Pressable style = {selectionStyles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
+                    <Text style ={selectionStyles.buttonText}> Add New List</Text>
                 </Pressable>
 
         </View>
     )
 }
-
-
-
-
-const styles = StyleSheet.create({
-    view:{
-        alignItems: 'center',
-       justifyContent: "space-around",
-       backgroundColor: 'white',
-       flex: 1,
-       borderWidth: 10, 
-       borderColor: '#0044b4',
-    },
-    text:{
-        
-        alignItems: "center",
-        fontSize: 30,
-        alignContent: "center",
-        color: '#0044b4',
-        padding: 20,
-        fontWeight: '600',
-        textAlign: 'center',
-        fontFamily: 'sans-serif-condensed'
-    },
-    pickerView:{
-        alignItems: "center",
-        height: 50,
-        width: 300,
-        backgroundColor: 'lightgrey',
-        borderColor: '#0044b4',
-        borderWidth: 2,
-        borderRadius: 25,
-        
-       
-    },
-    pressableButtons:{
-        alignItems: 'center',
-        alignSelf:'center',
-        margin:10,
-        paddingVertical: 10,
-        paddingHorizontal: 25,
-        borderRadius: 15,
-        elevation: 3,
-        backgroundColor: '#0044b4',
-        bottom: 20,
-        height: 50,
-        
-    },
-    buttonText: {
-        color:"#fff",
-        fontWeight: "bold",
-        textAlign: 'center',
-        fontFamily: 'notoserif'
-    }
-
-   
-
-   
-
-
-})
-
-
-
 
 export default SelectionScreen;
