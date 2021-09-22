@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-const homeStyle = StyleSheet.create({
+export const homeStyle = StyleSheet.create({
     background:{
         flex:1,
         // justifyContent: 'center',
@@ -43,4 +43,3 @@ const homeStyle = StyleSheet.create({
     
 })
 
-module.exports = homeStyle
