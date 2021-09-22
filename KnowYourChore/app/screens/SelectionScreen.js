@@ -40,7 +40,9 @@ function SelectionScreen({navigation}){
             <Text style ={styles.text}> Choose Your Chores </Text>
             
             <View style ={styles.pickerView}>
-               <Picker style = {{height: 50, width:250}} itemstyle = {{fontSize: 20}}
+               <Picker 
+                    style = {{height: 50, width:250, color: 'black'}} 
+                    itemstyle = {{backgroundColor: 'white', borderColor: '#0044b4', borderWidth: 100}}
                     prompt="Choose a List"
                     selectedValue={selectedValue}
                     
@@ -68,30 +70,33 @@ function SelectionScreen({navigation}){
 
 const styles = StyleSheet.create({
     view:{
-        alignItems: "center",
+        alignItems: 'center',
        justifyContent: "space-around",
        backgroundColor: 'white',
        flex: 1,
-
+       borderWidth: 10, 
+       borderColor: '#0044b4',
     },
     text:{
         
         alignItems: "center",
-        fontSize: 20,
+        fontSize: 30,
         alignContent: "center",
-        color: "#b15e42",
-        padding: 70,
-        borderColor: "black",
-        borderRadius: 25,
-        fontWeight: "bold"
-
+        color: '#0044b4',
+        padding: 20,
+        fontWeight: '600',
+        textAlign: 'center',
+        fontFamily: 'sans-serif-condensed'
     },
     pickerView:{
-        flex: 0.5,
         alignItems: "center",
-        height: 150,
+        height: 50,
         width: 300,
-        backgroundColor: 'grey',
+        backgroundColor: 'lightgrey',
+        borderColor: '#0044b4',
+        borderWidth: 2,
+        borderRadius: 25,
+        
        
     },
     pressableButtons:{
@@ -103,11 +108,15 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         elevation: 3,
         backgroundColor: '#0044b4',
+        bottom: 20,
+        height: 50,
         
     },
     buttonText: {
         color:"#fff",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textAlign: 'center',
+        fontFamily: 'notoserif'
     }
 
    
