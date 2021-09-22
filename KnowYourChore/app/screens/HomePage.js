@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, Image, StyleSheet, Pressable} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import homeStyle from "../styles/homeStyles";
+import {homeStyle} from "../styles/homeStyles";
 
 const logo = require('../assets/logo.png')
 
