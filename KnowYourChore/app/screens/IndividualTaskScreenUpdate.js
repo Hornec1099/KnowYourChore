@@ -5,7 +5,7 @@ import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 import taskService from "../services/tasksService";
 
-export default function IndividualTaskScreenUpdate( {editTask, route, navigation} ) {
+export default function IndividualTaskScreen1( {editTask, route, navigation} ) {
     
     const {task, taskId} = route.params
 

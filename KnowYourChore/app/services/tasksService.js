@@ -36,7 +36,7 @@ const taskService = {
             'Content-Type': 'application/json'
         }
         })
-        .then(res => res.json())
+        .then(res => {res.json()})
       },
 // updates task to Tasklist array
     updateTask(task, taskListId) {
