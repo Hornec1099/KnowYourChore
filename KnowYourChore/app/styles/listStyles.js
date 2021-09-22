@@ -6,11 +6,15 @@ export const listStyle = StyleSheet.create({
         flex:1,
         fontSize:200
     },
-    header:{
-        fontSize:35,
-        color:"black",
-        textDecorationLine:"underline",
-        textAlign:"center"
+    header:{       
+            alignItems: "center",
+            fontSize: 30,
+            alignContent: "center",
+            color: '#0044b4',
+            padding: 20,
+            fontWeight: '600',
+            textAlign: 'center',
+            fontFamily: 'sans-serif-condensed'
     },
     individualTaskContainer:{
         flexDirection:"row",
@@ -34,7 +38,7 @@ export const listStyle = StyleSheet.create({
     pressableDelete:{
         alignItems:'flex-end',
         justifyContent: 'flex-end',
-        marginLeft:75,
+        marginLeft:"auto",
         marginTop:2,
         paddingVertical:5,
         paddingHorizontal: 15,
