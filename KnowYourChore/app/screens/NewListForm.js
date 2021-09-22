@@ -40,9 +40,11 @@ export default function NewList({navigation}) {
                             />
 
                             <Pressable
-                             style = {newListStyles.button}
-                             title= 'Submit New List' onPress={formikprops.handleSubmit} >Submit new list</Pressable>
-                        <Text/>
+                                style = {newListStyles.button}
+                                title= 'Submit New List' onPress={formikprops.handleSubmit} >
+                                <Text style = {newListStyles.textbutton}>Submit new list</Text>
+                            </Pressable>
+                        
 
                     </View>
                 )}
@@ -63,7 +65,7 @@ const newListStyles = StyleSheet.create({
 
 
     formBackground: {
-        // alignItems: "center",
+        alignItems: "center",
         justifyContent: "space-evenly",
         // backgroundColor: "blue",
         height: 500
@@ -85,6 +87,7 @@ const newListStyles = StyleSheet.create({
         backgroundColor: "yellow",
         alignItems: "center",
         height:50,
+        width: 200,
         // alignItems: "center",
         // borderColor: "black"
         
@@ -93,10 +96,17 @@ const newListStyles = StyleSheet.create({
     button: {
         backgroundColor: "#1c86ee",
         borderRadius: 15,
-        height:50,
+        height: 50,
+        width: 200,
         alignItems: "center",
-        fontSize: 25,
+        
 
+
+    },
+
+    textbutton: {
+        fontSize: 20,
+        color: "#fff"
 
     }
 
