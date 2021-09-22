@@ -39,11 +39,11 @@ function SelectionScreen({navigation}){
         <View style = {styles.view}>
             <Text style ={styles.text}> Choose Your Chores </Text>
             
-            <View style ={styles.picker}>
-               <Picker 
+            <View style ={styles.pickerView}>
+               <Picker style = {{height: 50, width:250}} itemstyle = {{fontSize: 20}}
                     prompt="Choose a List"
                     selectedValue={selectedValue}
-                    style={{ height: 50, width:250 }}
+                    
                     onValueChange = {handleValueChange} > 
 
                    {renderTasks}
@@ -56,7 +56,7 @@ function SelectionScreen({navigation}){
                 </Pressable>
 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
-                    <Text> Add New List</Text>
+                    <Text style ={styles.buttonText}> Add New List</Text>
                 </Pressable>
 
         </View>
@@ -69,7 +69,9 @@ function SelectionScreen({navigation}){
 const styles = StyleSheet.create({
     view:{
         alignItems: "center",
-       justifyContent: "space-around"
+       justifyContent: "space-around",
+       backgroundColor: 'white',
+       flex: 1,
 
     },
     text:{
@@ -84,12 +86,13 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
 
     },
-    picker:{
+    pickerView:{
         flex: 0.5,
-        padding: 40,
         alignItems: "center",
-        height: 50,
-        width:250,
+        height: 150,
+        width: 300,
+        backgroundColor: 'grey',
+       
     },
     pressableButtons:{
         alignItems: 'center',
@@ -99,11 +102,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 25,
         borderRadius: 15,
         elevation: 3,
-        backgroundColor: '#fcd35f',
+        backgroundColor: '#0044b4',
         
     },
     buttonText: {
-        color:"#b15e42",
+        color:"#fff",
         fontWeight: "bold"
     }
 

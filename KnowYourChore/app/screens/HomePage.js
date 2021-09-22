@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Text, ImageBackground, StyleSheet, Pressable} from "react-native";
+import { Text, Image, StyleSheet, Pressable} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import homeStyle from "../styles/homeStyles";
 
 const logo = require('../assets/logo.png')
 
@@ -9,46 +11,16 @@ function HomePage ({navigation}) {
     const logo = require('../assets/logo.png')
 
     return (
-            <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
+        <SafeAreaView style ={homeStyle.background}>
+            <Image style = {homeStyle.image} source ={logo}/>
                 
-                <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push('Selection')}}>
-                    <Text style = {styles.buttonText}> Enter </Text>
+                <Pressable style = {homeStyle.pressableButtons} onPress={() => {navigation.push('Selection')}}>
+                    <Text style = {homeStyle.buttonText}> Enter </Text>
                 </Pressable>
-                
-            </ImageBackground>
+        </SafeAreaView>
+            
     )
 }
 
-
-const styles = StyleSheet.create({
-    background:{
-        flex:1,
-        justifyContent:"flex-end",
-        backgroundColor:"white",
-        
-    },
-    pressableButtons:{
-        alignItems: 'center',
-        alignSelf:'center',
-        margin:10,
-        paddingVertical: 10,
-        paddingHorizontal: 50,
-        borderRadius: 15,
-        elevation: 3,
-        backgroundColor: '#7fcef0',
-        position: "absolute",
-        bottom: 50,
-        
-        
-    },
-    buttonText: {
-        color: "#b15e42",
-        fontSize: 15,
-        fontWeight: "bold"
-        
-
-    }
-    
-})
 
 export default HomePage
