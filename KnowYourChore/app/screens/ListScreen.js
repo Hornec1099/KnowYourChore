@@ -41,7 +41,7 @@ function ListScreen ({navigation, route}) {
     <View style ={listStyle.individualTaskContainer}>
 
         <BouncyCheckbox 
-        fillColor="#02" unfillColor= "#cc3000"  
+        fillColor="#028900" unfillColor= "#cc3000"  
         isChecked = {checkedState} 
         onPress= { ({checkedState}) => { setCheckedState(!checkedState)}} />
 
