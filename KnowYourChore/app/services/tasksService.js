@@ -2,18 +2,15 @@
 const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
 
 const taskService = {
+  
+  // returns all task Lists
     getTasks() {
         return fetch(baseUrl)
             .then((res) => res.json())
             
         },
 
-    getIndividualTask(id){
-      return fetch(baseUrl + id) 
-          .then((res) => res.json())
-      },
-    
-
+        // used to add a task to a TaskList 
     addTask(task, taskListId) {
         return fetch(`${baseUrl}${taskListId}/tasks`  , {
         method: 'POST',
@@ -38,7 +35,7 @@ const taskService = {
           .then(res => res.json());
     },
 
-  
+  // used to remove a task from an existing task list
     deleteTask(task, taskListId){
         return fetch(`${baseUrl}${taskListId}/delete`, {
             method: 'PUT',

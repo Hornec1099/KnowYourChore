@@ -10,22 +10,25 @@ function SelectionScreen({navigation}){
     const [selectedValue, setSelectedValue] = useState("");
     const [taskLists , setTaskLists] = useState([])
     
+    // gets all task information from data set getting actual task List names and not individual tasks
     const getAllTasks =  () => {
         taskService.getTasks()
         .then(data => {setTaskLists(data)})
         .catch(error => {console.error(error)})
     }
 
+    // use effect to call tasks on rendering
     useEffect(() => {
         console.log("useEffect called in selection")
        getAllTasks()
        }, []);
 
+    //    used within the Picker to change selected value
      const handleValueChange = (itemValue) => {
          setSelectedValue(itemValue);
      }
       
-
+    //  renders all options available that will then be used in Picker
     let renderTasks = taskLists.map((taskList) => {
         return( <Picker.Item label ={taskList.listName} value ={taskList} key ={taskList.id} /> )
     })
@@ -49,16 +52,9 @@ function SelectionScreen({navigation}){
                 </View>
                 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
-                    <Text>Go to List</Text>
+                    <Text style = {styles.buttonText}>Go to List</Text>
                 </Pressable>
 
-                
-            
-            
-            
-            {/* <Button title="Open List" onPress ={() => { navigation.PushManager('ListScreen')}}/> */}
-            {/* <Button 
-             title="Add new chore list" onPress = {() => {navigation.navigate('ListScreen')}}/> */}
         </View>
     )
 }
@@ -75,12 +71,13 @@ const styles = StyleSheet.create({
     text:{
         
         alignItems: "center",
-        fontSize: 25,
+        fontSize: 20,
         alignContent: "center",
-        color: "green",
+        color: "#b15e42",
         padding: 70,
         borderColor: "black",
-        borderRadius: 25
+        borderRadius: 25,
+        fontWeight: "bold"
 
     },
     picker:{
@@ -96,10 +93,15 @@ const styles = StyleSheet.create({
         margin:10,
         paddingVertical: 10,
         paddingHorizontal: 25,
-        borderRadius: 25,
+        borderRadius: 15,
         elevation: 3,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#fcd35f',
+        
     },
+    buttonText: {
+        color:"#b15e42",
+        fontWeight: "bold"
+    }
 
    
 

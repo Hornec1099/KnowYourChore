@@ -3,33 +3,28 @@ use tasks;
 db.dropDatabase();
 
 db.taskLists.insertMany(  [  {
-    "id" :1,
     "listName":"Mum List",
     "taskList":[
-            {   "id": 1,
-
-                "taskName": "Deep clean oven",
+            {   "taskName": "Deep clean oven",
                 "taskDescription": "Clean oven using products under sink",
                 "taskCompleteBy": "4.00 pm",
                 "taskLocation": "Kitchen",
                 "taskAssignedTo": "Cameron"
             },
-            { " id": 2,
-                "taskName": "Vacuum",
+            {   "taskName": "Vacuum",
                 "taskDescription": "Vacuum bedrooms",
                 "taskCompleteBy": "7.30 pm",
                 "taskLocation": "Bedrooms",
                 "taskAssignedTo": "Arek"
             },
-            {   "id": 3,
-                "taskName": "Clean bathroom",
+            {   "taskName": "Clean bathroom",
                 "taskDescription": "Clean your bloody bathroom",
                 "taskCompleteBy": "2:00 pm",
                 "taskLocation": "En-Suite",
                 "taskAssignedTo": "Akwasi"
             }]
         },
-        {"id":2,
+        {
         "listName":"Dad List",
         "taskList":[]
     }]

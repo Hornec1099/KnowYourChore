@@ -21,11 +21,15 @@ export default function App() {
 
     <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
+         {/* this navigates to the Home screen */}
          <Stack.Screen name="Home" component ={HomePage}/>
-         <Stack.Screen name="ListScreen" component ={ListScreen}/>
+         {/* this navigates to the Selection screen used for selecting the task list to access */}
          <Stack.Screen name="Selection" component ={SelectionScreen}/>
-         {/* <Stack.Screen name="IndividualTaskScreen" component ={IndividualTaskScreen}/> */}
+         {/* this navigates to the Task List screen with all task in the list */}
+         <Stack.Screen name="ListScreen" component ={ListScreen}/>
+        {/* this navigates to the Individual task screen used to update an existing task */}     
          <Stack.Screen name="UpdateTask" component ={IndividualTaskScreen1}/>
+         {/* this navigates to the Individual task form used to add a new task */}  
          <Stack.Screen name="NewTask" component ={IndividualTaskScreenNew}/>
        </Stack.Navigator>
     </NavigationContainer>

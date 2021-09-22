@@ -11,21 +11,21 @@ function ListScreen ({navigation, route}) {
 
     
 
-
+// used to retrieve existing data before wiping once shown
     useEffect(() => {
         console.log("useEffect called in list screen")
-        
-        console.log("useEffect  called")
         getTaskList(route.params._id)
         setTaskList ({})
     }, []);
 
+    // called to get the taskList data to Shown as FlatList
     const getTaskList = (id) =>{
         taskService.getIndividualTask(id)
         .then(data => {setTaskList(data)})
         .catch((err) => {console.error(err)})
     }
 
+    // used to Handle the deletion of a task
     const handleDelete = (task) => {
         taskService.deleteTask(task, taskList._id);
         navigation.replace('ListScreen', taskList)
@@ -37,6 +37,7 @@ function ListScreen ({navigation, route}) {
     //     navigation.replace('ListScreen', taskList)
     // }
 
+    // renders a new Task Item row within the FlatList using the Data Provided
       const renderItem = ({ item}) => {
     return (
 
