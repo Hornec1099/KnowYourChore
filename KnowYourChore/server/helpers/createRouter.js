@@ -69,11 +69,10 @@ router.get('/:id', (req, res) =>{
      // Update Route
      router.put('/:id', (req, res) => {
       const id = req.params.id;
-      const updatedData = req.body;
-      delete updatedData.__dirname;
-
+      const updatedTask = req.body;
+      delete updatedTask.__dirname;
       collection
-      .updateOne({ _id: ObjectId(id)}, { $set: updatedData})
+      .updateOne({ _id: ObjectId(id)}, { $pull: {taskList: updatedTask}})
       .then(result => {
           res.json(result);
       })

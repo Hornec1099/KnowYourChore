@@ -5,7 +5,7 @@ import { useLinkProps } from "@react-navigation/native";
 import { globalStyles } from "../styles/global";
 import taskService from "../services/tasksService";
 
-export default function IndividualTaskScreen1( {editTask, route} ) {
+export default function IndividualTaskScreenUpdate( {editTask, route, navigation} ) {
     
     const {task, taskId} = route.params
 
@@ -13,8 +13,8 @@ export default function IndividualTaskScreen1( {editTask, route} ) {
 
 
     const handleSubmit = (values) =>{
-        
-        taskService.addTask(values, taskId)
+        const updateTask = taskService.updateTask(values, taskId)
+        taskService.updateTask(values, taskId)
         navigation.replace('ListScreen', {_id: taskId})
        
     }

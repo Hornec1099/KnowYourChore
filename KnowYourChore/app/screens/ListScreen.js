@@ -31,6 +31,12 @@ function ListScreen ({navigation, route}) {
         navigation.replace('ListScreen', taskList)
     }
 
+    // const handleUpdate = (id) => {
+    //     taskService.getIndividualTask(id)
+    //     taskService.updateTask(task, task.id);
+    //     navigation.replace('ListScreen', taskList)
+    // }
+
       const renderItem = ({ item}) => {
     return (
 

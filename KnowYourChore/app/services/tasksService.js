@@ -26,11 +26,12 @@ const taskService = {
         .then(res => res.json())
       },
 
-    updateTask(task) {
-        return fetch(baseUrl + task._id, {
+    updateTask(task, taskListId) {
+        return fetch(`${baseUrl}${taskListId}`, {
           method: 'PUT',
           body: JSON.stringify(task),
           headers: {
+            'Accept' : 'application/json',
             'Content-Type': 'application/json'
           }
         })
