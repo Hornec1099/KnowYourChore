@@ -43,7 +43,6 @@ function SelectionScreen({navigation}){
             <View style ={selectionStyles.pickerView}>
                <Picker 
                     style = {{height: 50, width:250, color: 'black'}} 
-                    itemstyle = {{backgroundColor: 'white', borderColor: '#0044b4', borderWidth: 100}}
                     prompt="Choose a List"
                     selectedValue={selectedValue}
                     
@@ -53,14 +52,15 @@ function SelectionScreen({navigation}){
 
                 </Picker>
                 </View>
-                
+                <View>
                 <Pressable style = {selectionStyles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
-                    <Text style = {selectionStyles.buttonText}>Go to List</Text>
+                    <Text style = {selectionStyles.buttonText}>Go To List</Text>
                 </Pressable>
 
                 <Pressable style = {selectionStyles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
                     <Text style ={selectionStyles.buttonText}> Add New List</Text>
                 </Pressable>
+                </View>
 
         </View>
     )

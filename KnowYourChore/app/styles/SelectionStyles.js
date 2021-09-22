@@ -6,8 +6,8 @@ export const selectionStyles = StyleSheet.create({
        justifyContent: "space-around",
        backgroundColor: 'white',
        flex: 1,
-       borderWidth: 10, 
-       borderColor: '#0044b4',
+    //    borderWidth: 6, 
+    //    borderColor: '#1c86ee',
     },
     text:{
         
@@ -16,7 +16,7 @@ export const selectionStyles = StyleSheet.create({
         alignContent: "center",
         color: '#0044b4',
         padding: 20,
-        fontWeight: '600',
+        fontWeight: '700',
         textAlign: 'center',
         fontFamily: 'sans-serif-condensed'
     },
@@ -24,7 +24,7 @@ export const selectionStyles = StyleSheet.create({
         alignItems: "center",
         height: 50,
         width: 300,
-        backgroundColor: 'lightgrey',
+        backgroundColor: '#e5e5e5',
         borderColor: '#0044b4',
         borderWidth: 2,
         borderRadius: 25,
@@ -37,17 +37,16 @@ export const selectionStyles = StyleSheet.create({
         margin:10,
         paddingVertical: 10,
         paddingHorizontal: 25,
-        borderRadius: 15,
+        borderRadius: 25,
         elevation: 3,
+        width:300,
         backgroundColor: '#0044b4',
-        bottom: 20,
-        height: 50,
-        
     },
     buttonText: {
-        color:"#fff",
+        alignItems: 'center',
+        color: "#fff", 
         fontWeight: "bold",
-        textAlign: 'center',
+        fontSize:20,
         fontFamily: 'notoserif'
-    }
+    },
 })

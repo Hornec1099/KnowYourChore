@@ -1,5 +1,5 @@
-const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
-// const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
+// const baseUrl = "http://192.168.1.45:5000/api/taskLists/";
+const baseUrl = "http://192.168.1.100:5000/api/taskLists/";
 
 const taskService = {
   // returns all task Lists
