@@ -52,7 +52,7 @@ function SelectionScreen({navigation}){
                 </View>
                 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("ListScreen", selectedValue  )}}>
-                    <Text>Go to List</Text>
+                    <Text style = {styles.buttonText}>Go to List</Text>
                 </Pressable>
 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push("NewList")}}>
@@ -75,12 +75,13 @@ const styles = StyleSheet.create({
     text:{
         
         alignItems: "center",
-        fontSize: 25,
+        fontSize: 20,
         alignContent: "center",
-        color: "green",
+        color: "#b15e42",
         padding: 70,
         borderColor: "black",
-        borderRadius: 25
+        borderRadius: 25,
+        fontWeight: "bold"
 
     },
     picker:{
@@ -96,10 +97,15 @@ const styles = StyleSheet.create({
         margin:10,
         paddingVertical: 10,
         paddingHorizontal: 25,
-        borderRadius: 25,
+        borderRadius: 15,
         elevation: 3,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#fcd35f',
+        
     },
+    buttonText: {
+        color:"#b15e42",
+        fontWeight: "bold"
+    }
 
    
 

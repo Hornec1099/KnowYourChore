@@ -20,7 +20,7 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
 
     
     return(
-        <View style={globalStyles.background}>
+        <View style={styles.background}>
             {/* Form component defining form */}
             <Formik
                 
@@ -33,9 +33,9 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
                     {/* inside form with each field element */}
                 {(formikprops) => (
                     <View>
-                        <Text style={globalStyles.headings}> Add Task </Text>
+                        <Text style={styles.headings}> Add Task </Text>
                         <TextInput 
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder='Task'
                             onChangeText={formikprops.handleChange('taskName')}
                             value={formikprops.values.taskName}
@@ -43,36 +43,42 @@ export default function IndividualTaskScreenNew( {editTask, route,navigation} ) 
 
                         <TextInput 
                             multiline
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder='Task Description'
                             onChangeText={formikprops.handleChange('description')}
                             value={formikprops.values.description}
                         />
 
                         <TextInput 
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder='Completed By'
                             onChangeText={formikprops.handleChange('completedBy')}
                             value={formikprops.values.completedBy}
                         />
 
                         <TextInput 
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder='Location'
                             onChangeText={formikprops.handleChange('location')}
                             value={formikprops.values.location}
                         />
 
                         <TextInput 
-                            style={globalStyles.input}
+                            style={styles.input}
                             placeholder='Assigned To'
                             onChangeText={formikprops.handleChange('assignedTo')}
                             value={formikprops.values.assignedTo}
                         />
-                        <Button style={globalStyles.button} title= 'Save Changes' onPress={formikprops.handleSubmit} />
+                        <Button style={styles.button} title= 'Save Changes' onPress={formikprops.handleSubmit} />
                     </View>
                 )}
             </Formik>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    background: {
+        
+    }
+})
