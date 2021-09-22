@@ -12,7 +12,7 @@ function HomePage ({navigation}) {
             <ImageBackground resizeMode ="contain" style ={styles.background} source ={logo}>
                 
                 <Pressable style = {styles.pressableButtons} onPress={() => {navigation.push('Selection')}}>
-                    <Text> Enter </Text>
+                    <Text style = {styles.buttonText}> Enter </Text>
                 </Pressable>
                 
             </ImageBackground>
@@ -31,11 +31,20 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         margin:10,
         paddingVertical: 10,
-        paddingHorizontal: 100,
-        borderRadius: 25,
+        paddingHorizontal: 50,
+        borderRadius: 15,
         elevation: 3,
-        backgroundColor: 'lightblue',
-    }   
+        backgroundColor: '#7fcef0',
+        
+        
+    },
+    buttonText: {
+        color: "#b15e42",
+        fontSize: 15,
+        fontWeight: "bold"
+        
+
+    }
     
 })
 
